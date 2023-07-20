@@ -35,13 +35,13 @@ function ssol_script_enqueues() {
            
  
      // Main Stylesheet
-     wp_enqueue_style( 'ssol-stylesheet', WP_PRO_PLUGIN_DIR.'assets/css/style.css', NULL, SSOL_VERSION);
+     wp_enqueue_style( 'ssol-stylesheet', SSOL_PLUGIN_DIR.'assets/css/style.css', NULL, SSOL_VERSION);
 
      // Plugin Main Responsive
-     wp_enqueue_style( 'ssol-responsive-style', WP_PRO_PLUGIN_DIR.'assets/css/responsive.css', NULL, SSOL_VERSION);
+     wp_enqueue_style( 'ssol-responsive-style', SSOL_PLUGIN_DIR.'assets/css/responsive.css', NULL, SSOL_VERSION);
      
     // custom scripts
-     wp_enqueue_script( 'ssol-custom', WP_PRO_PLUGIN_DIR.'assets/js/custom.js', array('jquery'), true );
+     wp_enqueue_script( 'ssol-custom', SSOL_PLUGIN_DIR.'assets/js/custom.js', array('jquery'), true );
  }
  
  add_action('wp_enqueue_scripts', 'ssol_script_enqueues');

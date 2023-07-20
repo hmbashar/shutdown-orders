@@ -6,15 +6,15 @@ if ( !defined( 'ABSPATH' ) ) exit;
 // taxonomy register
 function ssol_taxonomy()  {
 	register_taxonomy(
-		'ssol-cat',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
+		'ssol-category',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
 		'shutorder',                  //post type name
 		array(
 			'hierarchical'          => true,
-			'label'                         => 'SSOL Category',  //Display name
+			'label'                         => 'State',  //Display name
 			'query_var'             => true,
 			'show_admin_column'             => true,
 			'rewrite'                       => array(
-				'slug'                  => 'ssol-category', // This controls the base slug that will display before each term
+				'slug'                  => 'ssol-cat', // This controls the base slug that will display before each term
 				'with_front'    => true // Don't display the category base before
 			)
 		)
