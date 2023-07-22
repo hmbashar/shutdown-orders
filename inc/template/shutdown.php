@@ -25,14 +25,9 @@ get_header();
                 // Check if any term exists
                 if (!empty($terms) && is_array($terms)) {
                     // Run a loop and print them all
-                    foreach ($terms as $term) : 
-                    // echo '<pre>';
-                    //     print_r($term);
-                    ?>
-                    
-                        <option value="<?php echo $term->term_id; ?>"> <a href="<?php echo esc_url(get_term_link($term)) ?>">
-                                <?php echo $term->name; ?>
-                            </a></option>
+                    foreach ($terms as $term) :                     
+                    ?>                    
+                        <option value="<?php echo $term->term_id; ?>"> <?php echo $term->name; ?></option>
 
                 <?php endforeach;
                 }
@@ -42,8 +37,14 @@ get_header();
             <label for="ssol-county">Find your county</label>
             <select name="ssol_tax_child_id" id="ssol-county">
                 <?php
+                // checked if the form is submitted and get the parent taxonomy id
+                if(!empty($_POST['selected_state'])) {
+                    $parent_term_id =  $_POST['selected_state']; // get parent taxonomy id from selected form
+                } else {
+                    $parent_term_id =  $term->term_id; // get parent taxonomy id from selected form
+                }
                 // Get only taxonomy's child terms   
-                $term_id =  $_POST['selected_state']; // get parent taxonomy id from selected form
+                $term_id =  $parent_term_id; // get parent taxonomy id from selected form
                 $taxonomy_name = 'ssol-category'; // get taxonomy register name
                 $termchildren = get_term_children($term_id, $taxonomy_name);
                 foreach ($termchildren as $child) :
@@ -54,10 +55,6 @@ get_header();
             </select>
             <button type="submit">Submit</button>
         </form>
-        <?php 
-            echo $_POST['selected_state'].'<br>';
-            echo $_POST['ssol_tax_child_id'];
-        ?>
     </div>
 </div>
 
@@ -76,6 +73,13 @@ get_header();
             </thead>
             <tbody>
                 <?php
+                // checked if the form is submitted and get the child taxonomy id
+                if(!empty($_POST['ssol_tax_child_id'])) {
+                    $child_term_id = $_POST['ssol_tax_child_id'];
+                } else {
+                    $child_term_id =  $term->term_id; // get parent taxonomy id from selected form
+                }
+
                 // search/shorting query                
                 $ShutdownSearch = new WP_Query(
                     array(
@@ -85,7 +89,7 @@ get_header();
                             array(
                                 'taxonomy' => 'ssol-category', // taxonomy name
                                 'field' => 'slug', // term slug
-                                'terms' => array($_POST['ssol_tax_child_id']), // term slug
+                                'terms' => array($child_term_id), // term slug
                             )
                         ),
                     )
@@ -96,8 +100,7 @@ get_header();
                         require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
 
                     endwhile;
-                endif;
-                wp_reset_query();
+                endif;               
                 ?>
             </tbody>
         </table>
@@ -127,7 +130,7 @@ get_header();
                 if ($shutdown->have_posts()) :
                     while ($shutdown->have_posts()) : $shutdown->the_post();
 
-                    require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
+                        require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
 
                     endwhile;
                 endif;
