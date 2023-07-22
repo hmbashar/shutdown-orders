@@ -8,14 +8,15 @@ get_header();
 
 <div class="ssol-short-order-area">
     <div class="ssol-short-order">
-        <form action="">
+        <h2>Find your state</h2>
+        <form action="" method="POST">
             <label for="ssol-state">State</label>
-            <select name="" id="ssol-state">
+            <select name="selected_state" id="ssol-state">
                 <?php
                 // Get the taxonomy's terms
                 $terms = get_terms(
                     array(
-                        'taxonomy'      => 'ssol-category', // get taxonomy 
+                        'taxonomy'      => 'ssol-category', // taxonomy register name
                         'hide_empty'    => false, // get all taxonomy terms
                         'parent'        => 0, //get only parent taxonomy
                     )
@@ -24,8 +25,12 @@ get_header();
                 // Check if any term exists
                 if (!empty($terms) && is_array($terms)) {
                     // Run a loop and print them all
-                    foreach ($terms as $term) : ?>
-                        <option value=""> <a href="<?php echo esc_url(get_term_link($term)) ?>">
+                    foreach ($terms as $term) : 
+                    // echo '<pre>';
+                    //     print_r($term);
+                    ?>
+                    
+                        <option value="<?php echo $term->term_id; ?>"> <a href="<?php echo esc_url(get_term_link($term)) ?>">
                                 <?php echo $term->name; ?>
                             </a></option>
 
@@ -34,20 +39,25 @@ get_header();
                 ?>
             </select>
 
-            <label for="ssol-county">Find your country</label>
-            <select name="" id="ssol-county">
+            <label for="ssol-county">Find your county</label>
+            <select name="ssol_tax_child_id" id="ssol-county">
                 <?php
-                // Get the taxonomy's child terms   
-                $term_id = 7;
-                $taxonomy_name = 'ssol-category';
+                // Get only taxonomy's child terms   
+                $term_id =  $_POST['selected_state']; // get parent taxonomy id from selected form
+                $taxonomy_name = 'ssol-category'; // get taxonomy register name
                 $termchildren = get_term_children($term_id, $taxonomy_name);
                 foreach ($termchildren as $child) :
                     $term = get_term_by('id', $child, $taxonomy_name);
                 ?>
-                    <option value=""><?php echo esc_html($term->name); ?></option>
+                    <option value="<?php echo esc_html($term->slug); ?>"><?php echo esc_html($term->name); ?></option>
                 <?php endforeach; ?>
             </select>
+            <button type="submit">Submit</button>
         </form>
+        <?php 
+            echo $_POST['selected_state'].'<br>';
+            echo $_POST['ssol_tax_child_id'];
+        ?>
     </div>
 </div>
 
@@ -72,11 +82,10 @@ get_header();
                         'post_type' => 'shutorder',
                         'posts_per_page' => -1,
                         'tax_query' => array(
-                            //'relation' => 'AND',
                             array(
                                 'taxonomy' => 'ssol-category', // taxonomy name
                                 'field' => 'slug', // term slug
-                                'terms' => array('alabama'), // term slug
+                                'terms' => array($_POST['ssol_tax_child_id']), // term slug
                             )
                         ),
                     )
