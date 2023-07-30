@@ -43,8 +43,12 @@ function ssol_script_enqueues() {
     // custom scripts
      wp_enqueue_script( 'ssol-custom', SSOL_PLUGIN_DIR.'assets/js/custom.js', array('jquery'), true );
 
+
+    // Ajax file
+     wp_enqueue_script( 'ssol-data-ajax', SSOL_PLUGIN_DIR .'assets/js/ajax-data.js', array('jquery'), 1.0, true );
+
      // localization for ajax call
-     //wp_localize_script( string $handle, string $object_name, array $l10n );
+     wp_localize_script( 'ssol-data-ajax', 'ssol_option_data', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
  }
  
  add_action('wp_enqueue_scripts', 'ssol_script_enqueues');
