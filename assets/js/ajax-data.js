@@ -1,25 +1,29 @@
 (function($) {
 
-	$('.cbwct-tracking-from form').on('submit', function() {
-		var OrderNumber = $('.cbwct-tracking-form-field input#order_number').val();
-		var PhoneNumber = $('.cbwct-tracking-form-field input#phone').val();
-		var cbwctNonce = $('.cbwct-tracking-form-field input#_wpnonce').val();
+	$('.ssol-shutdown-order-list').on('submit', function() {
+		var SSOL_State = $('#ssol-state').val();
+		var SSOL_State_Child_county = $('#ssol-county').val();
+        
+
+        console.log(SSOL_State, SSOL_State_Child_county);
 
 		$.ajax({
 			type: 'post',
-			url:cbwct_tracker.ajaxurl,
+			url:ssol_option_data.ajaxurl,
 			data: {
-				action:'cbwct_wc_order_tracking_result',
-				order_number:OrderNumber,
-				phone_number:PhoneNumber,
-				Ali_nonce:cbwctNonce,
+				action:'ssol_shutdown_submit_result',
+				SSOL_State:SSOL_State,
+				SSOL_County:SSOL_State_Child_county,
+				//Ali_nonce:SSOLNonce,
 			},
 			beforeSend:function() {
-				$('.cbwct_result_preload').addClass('cbwct_wc_order_tracker_loader');
+                console.log('before send');
+				//$('.cbwct_result_preload').addClass('cbwct_wc_order_tracker_loader');
 			},
 			success: function(data) {
-				$('.cbwct-traking-form-result').html(data);
-				$('.cbwct_result_preload').removeClass('cbwct_wc_order_tracker_loader');				
+                console.log('after send');
+				$('.ssol-ajax-show-all-data').html(data);
+				//$('.cbwct_result_preload').removeClass('cbwct_wc_order_tracker_loader');				
 			}
 		});
 

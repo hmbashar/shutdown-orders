@@ -54,3 +54,20 @@ function ssol_load_tamplate_from_plugin( $template ) {
 }
 
 add_filter( 'template_include', 'ssol_load_tamplate_from_plugin' );
+
+
+
+
+// Ajax action function
+function ssol_shutdown_submit_result() {
+
+	
+
+	require_once(SSOL_PLUGIN_PATH . '/inc/template/process.php');
+	
+
+	exit;
+}
+
+add_action('wp_ajax_ssol_shutdown_submit_result', 'ssol_shutdown_submit_result');
+add_action('wp_ajax_nopriv_ssol_shutdown_submit_result', 'ssol_shutdown_submit_result');

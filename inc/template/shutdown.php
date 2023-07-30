@@ -9,7 +9,7 @@ get_header();
 <div class="ssol-short-order-area">
     <div class="ssol-short-order">
         <h2>Find your state</h2>
-        <form action="" method="POST">
+        <form action="" method="POST" class="ssol-shutdown-order-list">
             <label for="ssol-state">State</label>
             <select name="selected_state" id="ssol-state">
                 <?php
@@ -57,6 +57,11 @@ get_header();
         </form>
     </div>
 </div>
+
+
+<!-- Show All data after ajax action/submit -->
+<div class="ssol-ajax-show-all-data"></div>
+
 
 <div class="ssol-state-order-list-area">
     <div class="ssol-state-order-list">
@@ -140,6 +145,9 @@ get_header();
         </table>
     </div>
 </div>
+
+
+
 
 <?php
 //call footer

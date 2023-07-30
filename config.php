@@ -55,9 +55,11 @@ function ssol_script_enqueues() {
  
 
 
-// cusotom post register
+// custom post register
 require_once( SSOL_PLUGIN_PATH . 'inc/custom-post.php' );
 // custom functions
 require_once( SSOL_PLUGIN_PATH . 'inc/functions.php' );
 // custom taxonomy
 require_once( SSOL_PLUGIN_PATH . 'inc/taxonomy.php' );
+// Hooks
+require_once( SSOL_PLUGIN_PATH . 'inc/hooks.php' );
