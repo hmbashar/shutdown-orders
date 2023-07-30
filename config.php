@@ -42,6 +42,9 @@ function ssol_script_enqueues() {
      
     // custom scripts
      wp_enqueue_script( 'ssol-custom', SSOL_PLUGIN_DIR.'assets/js/custom.js', array('jquery'), true );
+
+     // localization for ajax call
+     //wp_localize_script( string $handle, string $object_name, array $l10n );
  }
  
  add_action('wp_enqueue_scripts', 'ssol_script_enqueues');
