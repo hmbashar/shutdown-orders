@@ -10,6 +10,9 @@ get_header();
     <div class="ssol-short-order">
         <h2>Find your state</h2>
         <form action="" method="POST" class="ssol-shutdown-order-list">
+
+
+
             <label for="ssol-state">State</label>
             <select name="selected_state" id="ssol-state">
                 <?php
@@ -34,6 +37,9 @@ get_header();
                 ?>
             </select>
 
+
+
+
             <label for="ssol-county">Find your county</label>
             <select name="ssol_tax_child_id" id="ssol-county">
                 <?php
@@ -53,7 +59,7 @@ get_header();
                     <option value="<?php echo esc_html($term->slug); ?>"><?php echo esc_html($term->name); ?></option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit">Submit</button>
+
         </form>
     </div>
 </div>

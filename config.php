@@ -44,11 +44,17 @@ function ssol_script_enqueues() {
      wp_enqueue_script( 'ssol-custom', SSOL_PLUGIN_DIR.'assets/js/custom.js', array('jquery'), true );
 
 
-    // Ajax file
+    // Ajax action for query
      wp_enqueue_script( 'ssol-data-ajax', SSOL_PLUGIN_DIR .'assets/js/ajax-data.js', array('jquery'), 1.0, true );
 
-     // localization for ajax call
+    // Ajax action for state to child county
+     wp_enqueue_script( 'ssol-state-to-child', SSOL_PLUGIN_DIR .'assets/js/state-child.js', array('jquery'), 1.0, true );
+
+     // localization for ajax query
      wp_localize_script( 'ssol-data-ajax', 'ssol_option_data', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
+
+     // localization for ajax action state to child
+     wp_localize_script( 'ssol-state-to-child', 'ssol_state_to_child', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
  }
  
  add_action('wp_enqueue_scripts', 'ssol_script_enqueues');
