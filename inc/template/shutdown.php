@@ -60,7 +60,7 @@ get_header();
                 <?php endforeach; ?>
             </select>
 
-            
+            <button>Submit</button>
 
         </form>
     </div>

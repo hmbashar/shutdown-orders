@@ -1,6 +1,6 @@
 (function($) {
 
-	$('#ssol-county').on('change', function() {
+	$('#ssol-county').on('submit', function() {
 		var SSOL_State = $('#ssol-state').val();
 		var SSOL_State_Child_county = $('#ssol-county').val();
         
