@@ -30,10 +30,7 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
                     // checked if the form is submitted and get the child taxonomy id
                     if (!empty($get_ssol_county)) {
                         $child_term_id = $get_ssol_county;
-                    } else {
-                        $child_term_id = $term->term_id; // get parent taxonomy id from selected form
-                    }
-
+                    } 
                     // search/shorting query                
                     $ShutdownSearch = new WP_Query(
                         array(

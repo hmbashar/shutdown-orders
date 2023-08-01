@@ -1,6 +1,6 @@
 (function($) {
 
-	$('.ssol-shutdown-order-list').on('submit', function() {
+	$('#ssol-county').on('change', function() {
 		var SSOL_State = $('#ssol-state').val();
 		var SSOL_State_Child_county = $('#ssol-county').val();
         

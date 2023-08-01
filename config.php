@@ -48,7 +48,7 @@ function ssol_script_enqueues() {
      wp_enqueue_script( 'ssol-data-ajax', SSOL_PLUGIN_DIR .'assets/js/ajax-data.js', array('jquery'), 1.0, true );
 
     // Ajax action for state to child county
-     wp_enqueue_script( 'ssol-state-to-child', SSOL_PLUGIN_DIR .'assets/js/state-child.js', array('jquery'), 1.0, true );
+     wp_enqueue_script( 'ssol-state-to-child', SSOL_PLUGIN_DIR .'assets/js/state-to-child.js', array('jquery'), 1.0, true );
 
      // localization for ajax query
      wp_localize_script( 'ssol-data-ajax', 'ssol_option_data', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
