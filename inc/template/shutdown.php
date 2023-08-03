@@ -133,8 +133,7 @@ get_header();
                         require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
 
                     endwhile;
-                endif;
-                wp_reset_query();
+                endif;                
                 ?>
             </tbody>
         </table>
