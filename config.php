@@ -42,15 +42,30 @@ function ssol_script_enqueues() {
      
     // custom scripts
      wp_enqueue_script( 'ssol-custom', SSOL_PLUGIN_DIR.'assets/js/custom.js', array('jquery'), true );
+
+
+    // Ajax action for query
+     wp_enqueue_script( 'ssol-data-ajax', SSOL_PLUGIN_DIR .'assets/js/ajax-data.js', array('jquery'), 1.0, true );
+
+    // Ajax action for state to child county
+     wp_enqueue_script( 'ssol-state-to-child', SSOL_PLUGIN_DIR .'assets/js/state-to-child.js', array('jquery'), 1.0, true );
+
+     // localization for ajax query
+     wp_localize_script( 'ssol-data-ajax', 'ssol_option_data', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
+
+     // localization for ajax action state to child
+    wp_localize_script( 'ssol-state-to-child', 'ssol_state_to_child', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
  }
  
  add_action('wp_enqueue_scripts', 'ssol_script_enqueues');
  
 
 
-// cusotom post register
+// custom post register
 require_once( SSOL_PLUGIN_PATH . 'inc/custom-post.php' );
 // custom functions
 require_once( SSOL_PLUGIN_PATH . 'inc/functions.php' );
 // custom taxonomy
 require_once( SSOL_PLUGIN_PATH . 'inc/taxonomy.php' );
+// Hooks
+require_once( SSOL_PLUGIN_PATH . 'inc/hooks.php' );

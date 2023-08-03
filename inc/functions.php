@@ -1,40 +1,44 @@
-<?php 
+<?php
 // Don't call the file directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if (!defined('ABSPATH'))
+    exit;
 
 // Custom Post type title placeholder change.
-function ssol_posttype_title_text( $title ){
+function ssol_posttype_title_text($title)
+{
     $screen = get_current_screen();
- 
-    if  ( 'shutorder' == $screen->post_type ) {
-         $title = 'Order Title';
-    }   
- 
+
+    if ('shutorder' == $screen->post_type) {
+        $title = 'Order Title';
+    }
+
     return $title;
 }
- 
-add_filter( 'enter_title_here', 'ssol_posttype_title_text' );
+
+add_filter('enter_title_here', 'ssol_posttype_title_text');
 
 
 
 
 //Page  Attribute
-function ssol_tamplate_add_page_attribute_dropdown( $post_templates, $wp_theme, $post, $post_type ) {
+function ssol_tamplate_add_page_attribute_dropdown($post_templates, $wp_theme, $post, $post_type)
+{
 
     $post_templates['shutdown.php'] = __('Shutdown Order', 'ssol');
 
     return $post_templates;
 }
 
-add_filter( 'theme_page_templates', 'ssol_tamplate_add_page_attribute_dropdown', 10, 4 );
+add_filter('theme_page_templates', 'ssol_tamplate_add_page_attribute_dropdown', 10, 4);
 
 
 //Template chnage
-function ssol_load_tamplate_from_plugin( $template ) {
+function ssol_load_tamplate_from_plugin($template)
+{
 
-    if(  get_page_template_slug() === 'shutdown.php' ) {
-    
-        if ( $theme_file = locate_template( array( 'shutdown.php' ) ) ) {
+    if (get_page_template_slug() === 'shutdown.php') {
+
+        if ($theme_file = locate_template(array('shutdown.php'))) {
             $template = $theme_file;
         } else {
             $template = SSOL_PLUGIN_PATH . 'inc/template/shutdown.php';
@@ -46,11 +50,62 @@ function ssol_load_tamplate_from_plugin( $template ) {
     //   }
 
 
-    if($template == '') {
+    if ($template == '') {
         throw new \Exception('No template found');
     }
 
     return $template;
 }
 
-add_filter( 'template_include', 'ssol_load_tamplate_from_plugin' );
+add_filter('template_include', 'ssol_load_tamplate_from_plugin');
+
+
+
+
+// Ajax action function
+function ssol_shutdown_submit_result()
+{
+
+
+
+    require_once(SSOL_PLUGIN_PATH . '/inc/template/process.php');
+
+
+    exit;
+}
+
+add_action('wp_ajax_ssol_shutdown_submit_result', 'ssol_shutdown_submit_result');
+add_action('wp_ajax_nopriv_ssol_shutdown_submit_result', 'ssol_shutdown_submit_result');
+
+
+// Ajax action function for state to child
+function ssol_shutdown_state_to_child()
+{
+    ?>
+
+    <select name="ssol_tax_child_id" id="ssol-county">
+        <?php
+        // checked if the form is submitted and get the parent taxonomy id
+        if (!empty($_POST['sssolStateId'])) {
+            $parent_term_id = $_POST['sssolStateId']; // get parent taxonomy id from selected form
+         } //else {
+        //     $parent_term_id = $term->term_id; // get parent taxonomy id from selected form
+        // }
+        // Get only taxonomy's child terms   
+        $term_id = $parent_term_id; // get parent taxonomy id from selected form
+        $taxonomy_name = 'ssol-category'; // get taxonomy register name
+        $termchildren = get_term_children($term_id, $taxonomy_name);
+        foreach ($termchildren as $child):
+            $term = get_term_by('id', $child, $taxonomy_name);
+            ?>
+            <option value="<?php echo esc_html($term->slug); ?>"><?php echo esc_html($term->name); ?></option>
+        <?php endforeach; ?>
+    </select>
+
+    <?php
+
+    exit;
+}
+
+add_action('wp_ajax_ssol_shutdown_state_to_child', 'ssol_shutdown_state_to_child');
+add_action('wp_ajax_nopriv_ssol_shutdown_state_to_child', 'ssol_shutdown_state_to_child');
