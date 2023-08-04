@@ -43,6 +43,8 @@ function ssol_script_enqueues() {
     // custom scripts
      wp_enqueue_script( 'ssol-custom', SSOL_PLUGIN_DIR.'assets/js/custom.js', array('jquery'), true );
 
+     wp_enqueue_script( 'ssol-custom-chart', SSOL_PLUGIN_DIR.'assets/js/plotly-2.24.1.min.js', array('jquery'), true );
+
 
     // Ajax action for query
      wp_enqueue_script( 'ssol-data-ajax', SSOL_PLUGIN_DIR .'assets/js/ajax-data.js', array('jquery'), 1.0, true );

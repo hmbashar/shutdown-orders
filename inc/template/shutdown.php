@@ -6,8 +6,11 @@ if (!defined('ABSPATH')) exit;
 get_header();
 ?>
 
+
+
 <div class="ssol-short-order-area">
     <div class="ssol-short-order">
+    <div id='myDiv'></div>
         <h2>Find your state</h2>
         <form action="" method="POST" class="ssol-shutdown-order-list">
 

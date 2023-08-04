@@ -81,31 +81,79 @@ add_action('wp_ajax_nopriv_ssol_shutdown_submit_result', 'ssol_shutdown_submit_r
 // Ajax action function for state to child
 function ssol_shutdown_state_to_child()
 {
-    ?>
+?>
 
     <select name="ssol_tax_child_id" id="ssol-county">
         <?php
         // checked if the form is submitted and get the parent taxonomy id
         if (!empty($_POST['sssolStateId'])) {
             $parent_term_id = $_POST['sssolStateId']; // get parent taxonomy id from selected form
-         } //else {
+        } //else {
         //     $parent_term_id = $term->term_id; // get parent taxonomy id from selected form
         // }
         // Get only taxonomy's child terms   
         $term_id = $parent_term_id; // get parent taxonomy id from selected form
         $taxonomy_name = 'ssol-category'; // get taxonomy register name
         $termchildren = get_term_children($term_id, $taxonomy_name);
-        foreach ($termchildren as $child):
+        foreach ($termchildren as $child) :
             $term = get_term_by('id', $child, $taxonomy_name);
-            ?>
+        ?>
             <option value="<?php echo esc_html($term->slug); ?>"><?php echo esc_html($term->name); ?></option>
         <?php endforeach; ?>
     </select>
 
-    <?php
+<?php
 
     exit;
 }
 
 add_action('wp_ajax_ssol_shutdown_state_to_child', 'ssol_shutdown_state_to_child');
 add_action('wp_ajax_nopriv_ssol_shutdown_state_to_child', 'ssol_shutdown_state_to_child');
+
+
+function customscript()
+{
+?>
+
+    <script>
+        var xValue = ['CA', 'NY', 'AL'];
+        var trace1 = {
+            x: xValue,
+            y: [20, 14, 23],
+            name: 'City',
+            type: 'bar'
+        };
+
+        var trace2 = {
+            x: xValue,
+            y: [12, 18, 29],
+            name: 'County',
+            type: 'bar',
+            marker: {
+                color: 'orange'
+            },
+        };
+
+        var trace3 = {
+            x: xValue,
+            y: [30, 40, 69],
+            name: 'State',
+            type: 'bar',
+        };
+
+
+        var data = [trace1, trace2, trace3];
+
+        var layout = {
+            barmode: 'stack',
+            title: 'Shutdowns by State',
+            bargap: 0.05
+        };
+
+        Plotly.newPlot('myDiv', data, layout);
+    </script>
+
+<?php
+}
+
+add_action('wp_footer', 'customscript');
