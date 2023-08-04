@@ -78,6 +78,7 @@ add_action('wp_ajax_ssol_shutdown_submit_result', 'ssol_shutdown_submit_result')
 add_action('wp_ajax_nopriv_ssol_shutdown_submit_result', 'ssol_shutdown_submit_result');
 
 
+
 // Ajax action function for state to child
 function ssol_shutdown_state_to_child()
 {
@@ -111,17 +112,75 @@ add_action('wp_ajax_ssol_shutdown_state_to_child', 'ssol_shutdown_state_to_child
 add_action('wp_ajax_nopriv_ssol_shutdown_state_to_child', 'ssol_shutdown_state_to_child');
 
 
+
+
+// get terms post count
+function ssol_get_terms_postcount($id, $taxonomyName, $includeParent = false) {   
+    $cat = get_term($id, $taxonomyName);
+ 
+    if (is_wp_error($cat) || empty($cat)) {
+        return 0;
+    }
+    
+    if($includeParent == true) {
+        $count = (int) $cat->count;  // If you want to include the parent terms posts
+    }else {
+        $count = 0; // Initialize the total count for child terms
+    }  
+ 
+    $args = array(
+        'child_of' => $id,
+    );
+ 
+    $child_terms = get_terms($taxonomyName, $args);
+ 
+    foreach ($child_terms as $child_term) {
+        // Exclude the parent term itself from the count
+        if ($child_term->term_id !== $id) {
+            $count += $child_term->count;
+        }
+    }
+ 
+    return $count;
+ }
+ 
+ 
+
+
+
 function customscript()
 {
+
+    // Get the taxonomy's terms
+    $terms = get_terms(
+        array(
+            'taxonomy'      => 'ssol-category', // taxonomy register name
+            'hide_empty'    => false, // get all taxonomy terms
+            'parent'        => 0, //get only parent taxonomy
+        )
+    );
+    // Create an empty array to store the term names
+    $term_slugs = array();   
+
+    // Check if any term exists
+    if (!empty($terms) && is_array($terms)) {
+        // Run a loop and print them all
+        foreach ($terms as $term) :            
+            $term_slugs[] = strtoupper($term->slug); // set all term slug in array  
+          echo  ssol_get_terms_postcount($term->term_id, 'ssol-category', false ).'<br>';
+
+        endforeach;
+    }
+
 ?>
 
     <script>
-        var xValue = ['CA', 'NY', 'AL'];
+        var xValue = <?php echo json_encode($term_slugs); ?>;        
         var trace1 = {
             x: xValue,
             y: [20, 14, 23],
-            name: 'City',
-            type: 'bar'
+            name: 'State',
+            type: 'bar',         
         };
 
         var trace2 = {
@@ -129,15 +188,13 @@ function customscript()
             y: [12, 18, 29],
             name: 'County',
             type: 'bar',
-            marker: {
-                color: 'orange'
-            },
+           
         };
 
         var trace3 = {
             x: xValue,
             y: [30, 40, 69],
-            name: 'State',
+            name: 'City',
             type: 'bar',
         };
 
@@ -147,7 +204,17 @@ function customscript()
         var layout = {
             barmode: 'stack',
             title: 'Shutdowns by State',
-            bargap: 0.05
+            bargap: 0.05,
+            font: {
+                family: 'Raleway, sans-serif'
+            },
+           // showlegend: false,
+            xaxis: {
+                tickangle: -45
+            },
+            yaxis: {
+                zeroline: false,               
+            },
         };
 
         Plotly.newPlot('myDiv', data, layout);
