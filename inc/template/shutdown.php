@@ -79,17 +79,16 @@ get_header();
 
 
         <!-- // This is the regular order list -->
-        <h2>This is the regular shutdown order</h2>
-        <table>
-            <thead>
-                <th>Dates of Order</th>
-                <th>Order Title</th>
-                <th>Affecting</th>
-                <th>Order</th>
-                <th>Source</th>
-            </thead>
-            <tbody>
+        <!-- <?php 
+                $selected_terms = get_term_by('slug', $get_ssol_county, 'ssol-category');   // get selected taxonomy term by slug                   
+            ?>
+        <h2 class="ssol-shutdown-order-heading"><?php echo esc_html($selected_terms->name); ?> County Orders</h2> -->
+
+
                 <?php
+                // get table header
+                require_once(SSOL_PLUGIN_PATH . 'inc/template/table-header.php');
+
                 // regular shutdown order query
                 $shutdown = new WP_Query(
                     array(
@@ -107,9 +106,10 @@ get_header();
 
                     endwhile;
                 endif;                
-                ?>
-            </tbody>
-        </table>
+                
+                 // get table header
+                require_once(SSOL_PLUGIN_PATH . 'inc/template/table-footer.php');
+            ?>
     </div>
 </div>
 

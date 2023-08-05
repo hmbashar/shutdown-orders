@@ -16,7 +16,10 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
     ?>
     <div class="ssol-state-order-list-area">
         <div class="ssol-state-order-list">
-        <h2>This is the shorting shutdown order (Ajax)</h2>
+            <?php 
+                $selected_terms = get_term_by('slug', $get_ssol_county, 'ssol-category');   // get selected taxonomy term by slug                   
+            ?>
+        <h2 class="ssol-shutdown-order-heading"><?php echo esc_html($selected_terms->name); ?> County Orders</h2>
             <table>
                 <thead>
                     <th>Dates of Order</th>
