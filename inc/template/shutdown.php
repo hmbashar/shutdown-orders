@@ -95,7 +95,6 @@ get_header();
                 } else {
                     $child_term_id =  $term->term_id; // get parent taxonomy id from selected form
                 }
-
                 // search/shorting query                
                 $ShutdownSearch = new WP_Query(
                     array(
