@@ -77,48 +77,6 @@ get_header();
 <div class="ssol-state-order-list-area">
     <div class="ssol-state-order-list">
 
-    <!-- // This is the shorting part of the code -->
-    <h2>This is the shorting shutdown order</h2>
-        <table>
-            <thead>
-                <th>Dates of Order</th>
-                <th>Order Title</th>
-                <th>Affecting</th>
-                <th>Order</th>
-                <th>Source</th>
-            </thead>
-            <tbody>
-                <?php
-                // checked if the form is submitted and get the child taxonomy id
-                if(!empty($_POST['ssol_tax_child_id'])) {
-                    $child_term_id = $_POST['ssol_tax_child_id'];
-                } else {
-                    $child_term_id =  $term->term_id; // get parent taxonomy id from selected form
-                }
-                // search/shorting query                
-                $ShutdownSearch = new WP_Query(
-                    array(
-                        'post_type' => 'shutorder',
-                        'posts_per_page' => -1,
-                        'tax_query' => array(
-                            array(
-                                'taxonomy' => 'ssol-category', // taxonomy name
-                                'field' => 'slug', // term slug
-                                'terms' => array($child_term_id), // term slug
-                            )
-                        ),
-                    )
-                );
-                if ($ShutdownSearch->have_posts()) :
-                    while ($ShutdownSearch->have_posts()) : $ShutdownSearch->the_post();
-
-                        require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
-
-                    endwhile;
-                endif;               
-                ?>
-            </tbody>
-        </table>
 
         <!-- // This is the regular order list -->
         <h2>This is the regular shutdown order</h2>
