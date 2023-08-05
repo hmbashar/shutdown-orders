@@ -171,7 +171,7 @@ function customscript()
     // Check if any term exists
     if (!empty($terms) && is_array($terms)) {
         // Run a loop and print them all
-        ?>
+    ?>
         <script>
             var datas = [];
         </script>
@@ -181,13 +181,16 @@ function customscript()
 
             $countyCount =  ssol_get_terms_postcount($term->term_id, 'ssol-category', false);
             $stateCount = ssol_get_terms_postcount($term->term_id, 'ssol-category', true);
-    ?>
+        ?>
             <script>
                 var trace1<?php echo $term->term_id; ?> = {
                     x: ['<?php echo strtoupper($term->slug); ?>'],
                     y: [<?php echo $stateCount; ?>],
                     name: 'State',
                     type: 'bar',
+                    marker: {
+                        color: 'rgb(24, 44, 86)'
+                    }
                 };
 
                 var trace2<?php echo $term->term_id; ?> = {
@@ -195,6 +198,9 @@ function customscript()
                     y: [<?php echo  $countyCount; ?>],
                     name: 'County',
                     type: 'bar',
+                    marker: {
+                        color: 'rgb(45, 170, 228)'
+                    }
 
                 };
 
@@ -203,29 +209,30 @@ function customscript()
                     y: [<?php echo $stateCount; ?>],
                     name: 'City',
                     type: 'bar',
-                };              
-               // var datas = [trace1<?php echo $term->term_id; ?>, trace2<?php echo $term->term_id; ?>, trace3<?php echo $term->term_id; ?>];
-                
+                    marker: {
+                        color: 'rgb(56, 209, 135)'
+                    }
+                };
+                // var datas = [trace1<?php echo $term->term_id; ?>, trace2<?php echo $term->term_id; ?>, trace3<?php echo $term->term_id; ?>];
+
                 datas.push(trace1<?php echo $term->term_id; ?>);
                 datas.push(trace2<?php echo $term->term_id; ?>);
                 datas.push(trace3<?php echo $term->term_id; ?>);
-
-
             </script>
     <?php
 
 
         endforeach;
     }
-?>
+    ?>
 
-<?php
+    <?php
     ?>
 
     <script>
         var xValue = <?php echo json_encode($term_slugs); ?>;
         console.log(xValue);
-       // var xValue = 'NY';
+        // var xValue = 'NY';
         var trace1 = {
             x: ['NY'],
             y: [2],
@@ -272,7 +279,7 @@ function customscript()
 
         var data = [trace1, trace2, trace3, trace12, trace22, trace32];
         console.log(data);
-    
+
         var layout = {
             barmode: 'stack',
             title: 'Shutdowns by State',
