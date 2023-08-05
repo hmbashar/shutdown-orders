@@ -103,7 +103,7 @@ function ssol_shutdown_state_to_child()
         <?php endforeach; ?>
     </select>
 
-<?php
+    <?php
 
     exit;
 }
@@ -115,36 +115,37 @@ add_action('wp_ajax_nopriv_ssol_shutdown_state_to_child', 'ssol_shutdown_state_t
 
 
 // get terms post count
-function ssol_get_terms_postcount($id, $taxonomyName, $includeParent = false) {   
+function ssol_get_terms_postcount($id, $taxonomyName, $includeParent = false)
+{
     $cat = get_term($id, $taxonomyName);
- 
+
     if (is_wp_error($cat) || empty($cat)) {
         return 0;
     }
-    
-    if($includeParent == true) {
+
+    if ($includeParent == true) {
         $count = (int) $cat->count;  // If you want to include the parent terms posts
-    }else {
+    } else {
         $count = 0; // Initialize the total count for child terms
-    }  
- 
+    }
+
     $args = array(
         'child_of' => $id,
     );
- 
+
     $child_terms = get_terms($taxonomyName, $args);
- 
+
     foreach ($child_terms as $child_term) {
         // Exclude the parent term itself from the count
         if ($child_term->term_id !== $id) {
             $count += $child_term->count;
         }
     }
- 
+
     return $count;
- }
- 
- 
+}
+
+
 
 
 
@@ -159,48 +160,119 @@ function customscript()
             'parent'        => 0, //get only parent taxonomy
         )
     );
+
     // Create an empty array to store the term names
-    $term_slugs = array();   
+    $term_slugs = array();
+    // $countyCount = array();
+    // $stateCount = array();
+
+    $allstatedata = array();
 
     // Check if any term exists
     if (!empty($terms) && is_array($terms)) {
         // Run a loop and print them all
-        foreach ($terms as $term) :            
+        ?>
+        <script>
+            var datas = [];
+        </script>
+        <?php
+        foreach ($terms as $term) :
             $term_slugs[] = strtoupper($term->slug); // set all term slug in array  
-          echo  ssol_get_terms_postcount($term->term_id, 'ssol-category', false ).'<br>';
+
+            $countyCount =  ssol_get_terms_postcount($term->term_id, 'ssol-category', false);
+            $stateCount = ssol_get_terms_postcount($term->term_id, 'ssol-category', true);
+    ?>
+            <script>
+                var trace1<?php echo $term->term_id; ?> = {
+                    x: ['<?php echo strtoupper($term->slug); ?>'],
+                    y: [<?php echo $stateCount; ?>],
+                    name: 'State',
+                    type: 'bar',
+                };
+
+                var trace2<?php echo $term->term_id; ?> = {
+                    x: ['<?php echo strtoupper($term->slug); ?>'],
+                    y: [<?php echo  $countyCount; ?>],
+                    name: 'County',
+                    type: 'bar',
+
+                };
+
+                var trace3<?php echo $term->term_id; ?> = {
+                    x: ['<?php echo strtoupper($term->slug); ?>'],
+                    y: [<?php echo $stateCount; ?>],
+                    name: 'City',
+                    type: 'bar',
+                };              
+               // var datas = [trace1<?php echo $term->term_id; ?>, trace2<?php echo $term->term_id; ?>, trace3<?php echo $term->term_id; ?>];
+                
+                datas.push(trace1<?php echo $term->term_id; ?>);
+                datas.push(trace2<?php echo $term->term_id; ?>);
+                datas.push(trace3<?php echo $term->term_id; ?>);
+
+
+            </script>
+    <?php
+
 
         endforeach;
     }
-
 ?>
 
+<?php
+    ?>
+
     <script>
-        var xValue = <?php echo json_encode($term_slugs); ?>;        
+        var xValue = <?php echo json_encode($term_slugs); ?>;
+        console.log(xValue);
+       // var xValue = 'NY';
         var trace1 = {
-            x: xValue,
-            y: [20, 14, 23],
+            x: ['NY'],
+            y: [2],
             name: 'State',
-            type: 'bar',         
+            type: 'bar',
         };
 
         var trace2 = {
-            x: xValue,
-            y: [12, 18, 29],
+            x: ['NY'],
+            y: [1],
             name: 'County',
             type: 'bar',
-           
+
         };
 
         var trace3 = {
-            x: xValue,
-            y: [30, 40, 69],
+            x: ['NY'],
+            y: [3],
+            name: 'City',
+            type: 'bar',
+        };
+        var trace12 = {
+            x: ['MX'],
+            y: [2],
+            name: 'State',
+            type: 'bar',
+        };
+
+        var trace22 = {
+            x: ['MX'],
+            y: [1],
+            name: 'County',
+            type: 'bar',
+
+        };
+
+        var trace32 = {
+            x: ['MX'],
+            y: [3],
             name: 'City',
             type: 'bar',
         };
 
 
-        var data = [trace1, trace2, trace3];
-
+        var data = [trace1, trace2, trace3, trace12, trace22, trace32];
+        console.log(data);
+    
         var layout = {
             barmode: 'stack',
             title: 'Shutdowns by State',
@@ -208,16 +280,16 @@ function customscript()
             font: {
                 family: 'Raleway, sans-serif'
             },
-           // showlegend: false,
+            // showlegend: false,
             xaxis: {
                 tickangle: -45
             },
-            yaxis: {
-                zeroline: false,               
-            },
+            // yaxis: {
+            //     zeroline: false,               
+            // },
         };
 
-        Plotly.newPlot('myDiv', data, layout);
+        Plotly.newPlot('myDiv', datas, layout);
     </script>
 
 <?php

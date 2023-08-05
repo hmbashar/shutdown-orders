@@ -71,7 +71,3 @@ require_once( SSOL_PLUGIN_PATH . 'inc/functions.php' );
 require_once( SSOL_PLUGIN_PATH . 'inc/taxonomy.php' );
 // Hooks
 require_once( SSOL_PLUGIN_PATH . 'inc/hooks.php' );
-
-
-
-
