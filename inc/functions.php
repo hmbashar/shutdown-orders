@@ -144,3 +144,23 @@ function ssol_get_terms_postcount($id, $taxonomyName, $includeParent = false)
 
     return $count;
 }
+
+// Register the custom template for 'ssol-category' taxonomy
+function custom_ssol_category_template($template) {
+    if (is_tax('ssol-category')) {
+
+        $template = SSOL_PLUGIN_PATH . 'inc/taxonomy-ssol-category.php';
+    }
+    return $template;
+}
+add_filter('template_include', 'custom_ssol_category_template');
+
+
+// Change the query for 'ssol-category' taxonomy archive page
+function custom_taxonomy_archive_query($query) {
+    if (is_tax('ssol-category') && $query->is_main_query()) {
+        $query->set('post_type', 'shutorder'); // Set the post type to 'post'
+        $query->set('posts_per_page', 10); // Set the number of posts per page (change it as needed)
+    }
+}
+add_action('pre_get_posts', 'custom_taxonomy_archive_query');

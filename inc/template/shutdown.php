@@ -10,11 +10,9 @@ get_header();
 
 <div class="ssol-short-order-area">
     <div class="ssol-short-order">
-    <div id='myDiv'></div>
+        <div id='myDiv'></div>
         <h2>Find your state</h2>
         <form action="" method="POST" class="ssol-shutdown-order-list">
-
-
 
             <label for="ssol-state">State</label>
             <select name="selected_state" id="ssol-state">
@@ -31,9 +29,9 @@ get_header();
                 // Check if any term exists
                 if (!empty($terms) && is_array($terms)) {
                     // Run a loop and print them all
-                    foreach ($terms as $term) :                     
-                    ?>                    
-                        <option value="<?php echo $term->term_id; ?>"> <?php echo $term->name; ?></option>
+                    foreach ($terms as $term) :
+                ?>
+                        <option value="<?php echo $term->term_id; ?>" > <?php echo $term->name; ?></option>
 
                 <?php endforeach;
                 }
@@ -47,7 +45,7 @@ get_header();
             <select name="ssol_tax_child_id" id="ssol-county">
                 <?php
                 // checked if the form is submitted and get the parent taxonomy id
-                if(!empty($_POST['selected_state'])) {
+                if (!empty($_POST['selected_state'])) {
                     $parent_term_id =  $_POST['selected_state']; // get parent taxonomy id from selected form
                 } else {
                     $parent_term_id =  $term->term_id; // get parent taxonomy id from selected form
@@ -63,7 +61,7 @@ get_header();
                 <?php endforeach; ?>
             </select>
 
-            
+
 
         </form>
     </div>
@@ -79,42 +77,47 @@ get_header();
 
 
         <!-- // This is the regular order list -->
-        <!-- <?php 
+        <!-- <?php
                 $selected_terms = get_term_by('slug', $get_ssol_county, 'ssol-category');   // get selected taxonomy term by slug                   
-            ?>
+                ?>
         <h2 class="ssol-shutdown-order-heading"><?php echo esc_html($selected_terms->name); ?> County Orders</h2> -->
 
 
-                <?php
-                // get table header
-                require_once(SSOL_PLUGIN_PATH . 'inc/template/table-header.php');
+        <?php
+        
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["selected_state"])) {
+                $selectedValue = $_POST["selected_state"];
+                echo "Selected state value: " . $selectedValue;
+            }
+        }
 
-                // regular shutdown order query
-                $shutdown = new WP_Query(
-                    array(
-                        'post_type' => 'shutorder',
-                        'posts_per_page' => -1,
-                        'order' => 'DESC',
-                        'orderby' => 'date',
-                    )
-                );
+        // get table header
+        require_once(SSOL_PLUGIN_PATH . 'inc/template/table-header.php');
 
-                if ($shutdown->have_posts()) :
-                    while ($shutdown->have_posts()) : $shutdown->the_post();
+        // regular shutdown order query
+        $shutdown = new WP_Query(
+            array(
+                'post_type' => 'shutorder',
+                'posts_per_page' => -1,
+                'order' => 'DESC',
+                'orderby' => 'date',
+            )
+        );
 
-                        require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
+        if ($shutdown->have_posts()) :
+            while ($shutdown->have_posts()) : $shutdown->the_post();
 
-                    endwhile;
-                endif;                
-                
-                 // get table header
-                require_once(SSOL_PLUGIN_PATH . 'inc/template/table-footer.php');
-            ?>
+                require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
+
+            endwhile;
+        endif;
+
+        // get table footer
+        require_once(SSOL_PLUGIN_PATH . 'inc/template/table-footer.php');
+        ?>
     </div>
 </div>
-
-
-
 
 <?php
 //call footer

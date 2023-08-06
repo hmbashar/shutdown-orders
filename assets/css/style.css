@@ -1,7 +1,32 @@
-.ssol-short-order-area, .ssol-state-order-list-area {
+.ssol-short-order-area,
+.ssol-state-order-list-area, .ssol-single-state-archive-heading {
     max-width: 1140px;
-    margin:50px auto;
+    margin: 50px auto;
 }
-.js-plotly-plot .plotly .modebar, .infolayer  {
+
+.js-plotly-plot .plotly .modebar,
+.infolayer {
     display: none !important;
+}
+
+.ssol-shutdown-pagination-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ssol-shutdown-nfp {}
+
+.ssol-shutdown-pagination .pagination {
+    margin: 0;
+}
+
+.ssol-shutdown-pagination .pagination .page-numbers{
+    background-color: #192C57;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #fff;
+}
+.ssol-shutdown-pagination .pagination .page-numbers:hover, .ssol-shutdown-pagination .pagination .page-numbers.current {
+    background-color: #2caae2;
+    color: #fff;
 }
