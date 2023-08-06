@@ -2,7 +2,8 @@
 // Don't call the file directly
 if (!defined('ABSPATH'))
     exit;
-
+// Get the current page number
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 
 
 // set variable for getting value from input field
@@ -39,6 +40,7 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
                         array(
                             'post_type' => 'shutorder',
                             'posts_per_page' => -1,
+                            'paged' => $paged,
                             'tax_query' => array(
                                 array(
                                     'taxonomy' => 'ssol-category',
@@ -62,6 +64,10 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
                     ?>
                 </tbody>
             </table>
+            <?php 
+                // pagination
+                 do_action('ssol_shutdown_pagination');
+            ?>
         </div>
     </div>
     <?php

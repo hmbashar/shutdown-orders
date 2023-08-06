@@ -40,7 +40,12 @@ function ssol_script_enqueues() {
      // Plugin Main Responsive
      wp_enqueue_style( 'ssol-responsive-style', SSOL_PLUGIN_DIR.'assets/css/responsive.css', NULL, SSOL_VERSION);
      
-     
+       // custom script
+       wp_enqueue_script( 'ssol-custom-js', SSOL_PLUGIN_DIR.'assets/js/custom.js', array('jquery'), true );
+
+     // localization for ajax action state to child 
+     wp_localize_script( 'ssol-custom-js', 'ssol_custom_js', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
+
      // custom chart
      wp_enqueue_script( 'ssol-custom-chart', SSOL_PLUGIN_DIR.'assets/js/plotly-2.24.1.min.js', array('jquery'), true );
 

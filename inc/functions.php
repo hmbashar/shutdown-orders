@@ -160,7 +160,7 @@ add_filter('template_include', 'custom_ssol_category_template');
 function custom_taxonomy_archive_query($query) {
     if (is_tax('ssol-category') && $query->is_main_query()) {
         $query->set('post_type', 'shutorder'); // Set the post type to 'post'
-        $query->set('posts_per_page', 10); // Set the number of posts per page (change it as needed)
+        $query->set('posts_per_page', 1); // Set the number of posts per page (change it as needed)
     }
 }
 add_action('pre_get_posts', 'custom_taxonomy_archive_query');

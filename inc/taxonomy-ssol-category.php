@@ -40,9 +40,9 @@ $current_term_id = get_queried_object();
 
                             foreach ($terms as $term) :
                                 // Get the URL for the term
-                            $term_url = get_term_link($term);
+                                $term_url = get_term_link($term);
                         ?>
-                               
+
                                 <option value="<?php echo esc_attr($term->term_id); ?>" data-url="<?php echo esc_url($term_url); ?>"> <?php echo $term->name; ?></option>
 
                         <?php endforeach;
@@ -69,7 +69,7 @@ $current_term_id = get_queried_object();
                         // set default none value option
                         echo '<option disabled selected value> -- select an option -- </option>';
                         foreach ($termchildren as $child) :
-                            $term = get_term_by('id', $child, $taxonomy_name);                            
+                            $term = get_term_by('id', $child, $taxonomy_name);
                         ?>
                             <option value="<?php echo esc_html($term->slug); ?>"><?php echo esc_html($term->name); ?></option>
                         <?php endforeach;  ?>
@@ -94,7 +94,7 @@ $current_term_id = get_queried_object();
                     <?php
 
                     // get table header
-                    require_once(SSOL_PLUGIN_PATH . 'inc/template/table-header.php');
+                    do_action('ssol_data_table_header');
 
                     if (have_posts()) : ?>
                         <?php while (have_posts()) : the_post();
@@ -111,33 +111,12 @@ $current_term_id = get_queried_object();
                         <p><?php _e('No Order found.'); ?></p>
                     <?php endif;
                     // get table footer
-                    require_once(SSOL_PLUGIN_PATH . 'inc/template/table-footer.php');
+                    do_action('ssol_data_table_footer');
+                    // get pagination
+                    do_action('ssol_shutdown_pagination');
+
                     ?>
-                    <!-- Pagination Area Start -->
-                    <div class="ssol-shutdown-pagination-area">
-                        <!-- Number of posts -->
-                        <div class="ssol-shutdown-nfp">
-                            <?php
-                            // Display 'Page X of Y'
-                            global $wp_query;
-                            $total_pages = $wp_query->max_num_pages;
-                            $current_page = max(1, get_query_var('paged'));
 
-                            echo '<p>Page ' . $current_page . ' of ' . $total_pages . '</p>';
-                            ?>
-                        </div><!-- Number of posts -->
-
-                        <div class="ssol-shutdown-pagination">
-                            <?php
-                            the_posts_pagination(array(
-                                'mid_size' => 2, // Number of page numbers to show before and after the current page
-                                'prev_text' => '&laquo;', // Text for the previous page link
-                                'next_text' => '&raquo;', // Text for the next page link
-                                'screen_reader_text' => ' ', // Hide default screen reader text
-                            ));
-                            ?>
-                        </div>
-                    </div><!-- Pagination Area End -->
                 </div>
             </div>
 
