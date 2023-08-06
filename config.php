@@ -40,23 +40,23 @@ function ssol_script_enqueues() {
      // Plugin Main Responsive
      wp_enqueue_style( 'ssol-responsive-style', SSOL_PLUGIN_DIR.'assets/css/responsive.css', NULL, SSOL_VERSION);
      
-    // custom scripts
-     wp_enqueue_script( 'ssol-custom', SSOL_PLUGIN_DIR.'assets/js/custom.js', array('jquery'), true );
-
+     
+     // custom chart
      wp_enqueue_script( 'ssol-custom-chart', SSOL_PLUGIN_DIR.'assets/js/plotly-2.24.1.min.js', array('jquery'), true );
 
 
     // Ajax action for query
      wp_enqueue_script( 'ssol-data-ajax', SSOL_PLUGIN_DIR .'assets/js/ajax-data.js', array('jquery'), 1.0, true );
 
-    // Ajax action for state to child county
-     wp_enqueue_script( 'ssol-state-to-child', SSOL_PLUGIN_DIR .'assets/js/state-to-child.js', array('jquery'), 1.0, true );
-
      // localization for ajax query
      wp_localize_script( 'ssol-data-ajax', 'ssol_option_data', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
 
-     // localization for ajax action state to child
-    wp_localize_script( 'ssol-state-to-child', 'ssol_state_to_child', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
+    // Ajax action for state to child county
+     wp_enqueue_script( 'ssol-state-to-child', SSOL_PLUGIN_DIR .'assets/js/state-to-child.js', array('jquery'), 1.0, true );
+
+
+     // localization for ajax action state to child 
+   wp_localize_script( 'ssol-state-to-child', 'ssol_state_to_child', array( 'ajaxurl'	=> admin_url('admin-ajax.php')) ); 
  }
  
  add_action('wp_enqueue_scripts', 'ssol_script_enqueues');
