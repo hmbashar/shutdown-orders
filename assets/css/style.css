@@ -9,7 +9,7 @@
     display: none !important;
 }
 
-.ssol-shutdown-pagination-area {
+.ssol-shutdown-pagination-area, .ssol-ajax-county-pagination {
     display: flex;
     justify-content: space-between;
 }

@@ -58,27 +58,33 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
 
                 endwhile;
             endif;
-            ?>
-
-            <?php
             // get table footer
             do_action('ssol_data_table_footer');
-            // pagination
-             do_action('ssol_shutdown_pagination');
-
-            // Pagination
-            if ($ShutdownSearch->max_num_pages > 1) {
-                echo '<div class="ssol-county-pagination">';
-                echo paginate_links(array(
-                    'base' => admin_url('admin-ajax.php') . '?action=ssol_shutdown_submit_result&SSOL_State=' . $get_ssol_state . '&SSOL_County=' . $get_ssol_county . '&paged=%#%',
-                    'format' => '&paged=%#%',
-                    'current' => $paged,
-                    'total' => $ShutdownSearch->max_num_pages,
-                ));
-                echo '</div>';
-            }
-
             ?>
+            <!-- Pagination Area-->
+            <div class="ssol-ajax-county-pagination">
+                <!-- number of pages  -->
+                <div class="ssol-ajax-county-nfp">
+                    <?php do_action('ssol_posts_number_of_pages', $paged, $ShutdownSearch->max_num_pages); ?>
+                </div><!-- number of pages  -->
+
+                <!-- Pagination nav -->
+                <div class="ssol-ajax-county-nav">
+                    <?php
+                    // Pagination
+                    if ($ShutdownSearch->max_num_pages > 1) {
+                        echo '<div class="ssol-county-pagination">';
+                        echo paginate_links(array(
+                            'base' => admin_url('admin-ajax.php') . '?action=ssol_shutdown_submit_result&SSOL_State=' . $get_ssol_state . '&SSOL_County=' . $get_ssol_county . '&paged=%#%',
+                            'format' => '&paged=%#%',
+                            'current' => $paged,
+                            'total' => $ShutdownSearch->max_num_pages,
+                        ));
+                        echo '</div>';
+                    }
+                    ?>
+                </div><!-- Pagination nav -->
+            </div><!--/ Pagination Area-->
         </div>
     </div>
 <?php

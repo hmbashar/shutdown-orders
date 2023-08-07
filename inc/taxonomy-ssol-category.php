@@ -24,7 +24,7 @@ $current_term_id = get_queried_object();
 
 
         <!-- Show All data after ajax action/submit -->
-        <div class="ssol-ajax-show-all-data"></div>
+        <?php do_action('ssol_ajax_show_all_data'); ?>
 
 
         <div class="ssol-state-order-list-area">
@@ -48,8 +48,6 @@ $current_term_id = get_queried_object();
                             require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
 
                         endwhile;
-
-
 
                         ?>
                     <?php else :

@@ -3,6 +3,12 @@
 if (!defined('ABSPATH')) exit;
 
 
+// Display 'Page X of Y'
+function ssol_posts_number_of_pages($current_page, $total_pages)
+{
+	echo '<p>Page ' . $current_page . ' of ' . $total_pages . '</p>';
+}	
+add_action('ssol_posts_number_of_pages', 'ssol_posts_number_of_pages',10, 2);
 
 // pagination hook
 function ssol_shutdown_pagination()
@@ -18,7 +24,8 @@ function ssol_shutdown_pagination()
 			$total_pages = $wp_query->max_num_pages;
 			$current_page = max(1, get_query_var('paged'));
 
-			echo '<p>Page ' . $current_page . ' of ' . $total_pages . '</p>';
+			do_action('ssol_posts_number_of_pages', $current_page, $total_pages);
+		
 			?>
 		</div><!-- Number of posts -->
 
@@ -147,3 +154,10 @@ function ssol_select_form($current_term_id)
 <?php
 	}
 add_action('ssol_select_form', 'ssol_select_form');
+
+
+// ajax show all data for county
+function ssol_ajax_show_all_data() {
+	echo '<div class="ssol-ajax-show-all-data"></div>';
+}
+add_action('ssol_ajax_show_all_data', 'ssol_ajax_show_all_data');
