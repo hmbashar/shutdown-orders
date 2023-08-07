@@ -72,6 +72,7 @@ function ssol_bar_chart_data()
                 datas.push(trace1<?php echo $term->term_id; ?>);
                 datas.push(trace2<?php echo $term->term_id; ?>);
                // datas.push(trace3<?php echo $term->term_id; ?>);
+
             </script>
     <?php
 

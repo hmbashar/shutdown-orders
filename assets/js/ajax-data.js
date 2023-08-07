@@ -1,7 +1,7 @@
 (function ($) {
 
 	// Create a function to handle fetching posts
-	function fetchPosts(SSOL_State, SSOL_County, paged, nonce) {
+	function ssol_fetchPosts(SSOL_State, SSOL_County, paged, nonce) {
 		$.ajax({
 			type: 'post',
 			url: ssol_option_data.ajaxurl,
@@ -28,7 +28,7 @@
 		var SSOL_County = $(this).val();
 		var nonce = $('#ssol_nonce_field').val(); // Get the nonce from a hidden field
 
-		fetchPosts(SSOL_State, SSOL_County, 1, nonce); // Query the first page when county changes
+		ssol_fetchPosts(SSOL_State, SSOL_County, 1, nonce); // Query the first page when county changes
 	});
 
 	// Handle pagination link clicks
@@ -39,7 +39,7 @@
 		var SSOL_County = $('#ssol-county').val();
 		var nonce = $('#ssol_nonce_field').val(); // Get the nonce from a hidden field
 
-		fetchPosts(SSOL_State, SSOL_County, page, nonce); // Query specific page on pagination link click
+		ssol_fetchPosts(SSOL_State, SSOL_County, page, nonce); // Query specific page on pagination link click
 	});
 
 
