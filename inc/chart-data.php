@@ -3,7 +3,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 
-function customscript()
+function ssol_bar_chart_data()
 {
 
     // Get the taxonomy's terms
@@ -67,7 +67,7 @@ function customscript()
                         color: 'rgb(56, 209, 135)'
                     }
                 };
-                // var datas = [trace1<?php echo $term->term_id; ?>, trace2<?php echo $term->term_id; ?>, trace3<?php echo $term->term_id; ?>];
+              
 
                 datas.push(trace1<?php echo $term->term_id; ?>);
                 datas.push(trace2<?php echo $term->term_id; ?>);
@@ -107,4 +107,4 @@ function customscript()
 <?php
 }
 
-add_action('wp_footer', 'customscript');
+add_action('wp_footer', 'ssol_bar_chart_data');
