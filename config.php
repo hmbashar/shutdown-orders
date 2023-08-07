@@ -74,8 +74,12 @@ require_once( SSOL_PLUGIN_PATH . 'inc/custom-post.php' );
 require_once( SSOL_PLUGIN_PATH . 'inc/functions.php' );
 // custom taxonomy
 require_once( SSOL_PLUGIN_PATH . 'inc/taxonomy.php' );
-// Hooks
-require_once( SSOL_PLUGIN_PATH . 'inc/hooks.php' );
+
+// Action Hooks
+require_once( SSOL_PLUGIN_PATH . 'inc/action-hooks.php' );
+
+// Filter Hooks
+require_once( SSOL_PLUGIN_PATH . 'inc/filter-hooks.php' );
 
 // chart data
 require_once( SSOL_PLUGIN_PATH . 'inc/chart-data.php' );
