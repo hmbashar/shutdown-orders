@@ -83,56 +83,7 @@ function customscript()
     <?php
     ?>
 
-    <script>
-      
-        
-        // // var xValue = 'NY';
-        // var trace1 = {
-        //     x: ['NY'],
-        //     y: [2],
-        //     name: 'State',
-        //     type: 'bar',
-        // };
-
-        // var trace2 = {
-        //     x: ['NY'],
-        //     y: [1],
-        //     name: 'County',
-        //     type: 'bar',
-
-        // };
-
-        // var trace3 = {
-        //     x: ['NY'],
-        //     y: [3],
-        //     name: 'City',
-        //     type: 'bar',
-        // };
-        // var trace12 = {
-        //     x: ['MX'],
-        //     y: [2],
-        //     name: 'State',
-        //     type: 'bar',
-        // };
-
-        // var trace22 = {
-        //     x: ['MX'],
-        //     y: [1],
-        //     name: 'County',
-        //     type: 'bar',
-
-        // };
-
-        // var trace32 = {
-        //     x: ['MX'],
-        //     y: [3],
-        //     name: 'City',
-        //     type: 'bar',
-        // };
-
-
-        // var data = [trace1, trace2, trace3, trace12, trace22, trace32];
-       
+    <script>      
 
         var layout = {
             barmode: 'stack',
