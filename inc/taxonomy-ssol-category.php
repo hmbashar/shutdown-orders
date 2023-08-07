@@ -41,9 +41,11 @@ $current_term_id = get_queried_object();
                             foreach ($terms as $term) :
                                 // Get the URL for the term
                                 $term_url = get_term_link($term);
+                                // Check if the current term's ID matches the selected term ID
+                                $selected = ($term->term_id === $current_term_id->term_id) ? 'selected' : '';
                         ?>
 
-                                <option value="<?php echo esc_attr($term->term_id); ?>" data-url="<?php echo esc_url($term_url); ?>"> <?php echo $term->name; ?></option>
+                                <option value="<?php echo esc_attr($term->term_id); ?>" data-url="<?php echo esc_url($term_url); ?>" <?php echo $selected; ?>> <?php echo $term->name; ?></option>
 
                         <?php endforeach;
                         }
