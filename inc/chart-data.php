@@ -58,20 +58,20 @@ function ssol_bar_chart_data()
 
                 };
 
-                var trace3<?php echo $term->term_id; ?> = {
-                    x: ['<?php echo strtoupper($term->slug); ?>'],
-                    y: [<?php echo $stateCount; ?>],
-                    name: 'City',
-                    type: 'bar',
-                    marker: {
-                        color: 'rgb(56, 209, 135)'
-                    }
-                };
+                // var trace3<?php echo $term->term_id; ?> = {
+                //     x: ['<?php echo strtoupper($term->slug); ?>'],
+                //     y: [<?php echo $stateCount; ?>],
+                //     name: 'City',
+                //     type: 'bar',
+                //     marker: {
+                //         color: 'rgb(56, 209, 135)'
+                //     }
+                // };
               
 
                 datas.push(trace1<?php echo $term->term_id; ?>);
                 datas.push(trace2<?php echo $term->term_id; ?>);
-                datas.push(trace3<?php echo $term->term_id; ?>);
+               // datas.push(trace3<?php echo $term->term_id; ?>);
             </script>
     <?php
 
