@@ -10,6 +10,7 @@ Version: 1.0
 Author: Md Abul Bashar
 Author URI: https://www.supreox.com
 License: GPLv2 or later
+Text Domain: ssol
 */
 
 /*
@@ -28,6 +29,13 @@ if ( !defined( 'ABSPATH' ) ) exit;
 define( 'SSOL_VERSION', '1.0' );
 define( 'SSOL_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SSOL_PLUGIN_DIR', plugin_dir_url( __FILE__ ));
+
+
+function ssol_load_plugin_textdomain() {
+  load_plugin_textdomain( 'ssol', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'plugins_loaded', 'ssol_load_plugin_textdomain' );
+
 
 
 //Supreox Order List
