@@ -10,7 +10,7 @@ get_header();
 
 <div class="ssol-short-order-area">
     <div class="ssol-short-order">
-        <div id='myDiv'></div>
+        <div id='ssol_chart_data'></div>
         <h2>Find your state</h2>
         <form action="" method="POST" class="ssol-shutdown-order-list">
 
@@ -74,13 +74,6 @@ get_header();
 
 <div class="ssol-state-order-list-area">
     <div class="ssol-state-order-list">
-
-
-        <!-- // This is the regular order list -->
-        <!-- <?php
-                $selected_terms = get_term_by('slug', $get_ssol_county, 'ssol-category');   // get selected taxonomy term by slug                   
-                ?>
-        <h2 class="ssol-shutdown-order-heading"><?php echo esc_html($selected_terms->name); ?> County Orders</h2> -->
 
 
         <?php

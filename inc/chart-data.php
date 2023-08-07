@@ -150,7 +150,7 @@ function customscript()
             // },
         };
 
-        Plotly.newPlot('myDiv', datas, layout);
+        Plotly.newPlot('ssol_chart_data', datas, layout);
     </script>
 
 <?php

@@ -16,7 +16,7 @@ $current_term_id = get_queried_object();
             <div class="ssol-short-order">
 
                 <!--Chart Area-->
-                <div id='myDiv'></div><!--Chart Area-->
+                <div id='ssol_chart_data'></div><!--Chart Area-->
 
 
                 <h2>Find your state</h2>
