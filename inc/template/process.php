@@ -3,8 +3,9 @@
 if (!defined('ABSPATH'))
     exit;
 // Get the current page number
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+//$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
+$paged = max(1, intval($_POST['paged'])); // Get the current page number from AJAX request
 
 // set variable for getting value from input field
 $get_ssol_state = sanitize_text_field($_POST['SSOL_State']);
@@ -63,7 +64,20 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
             // get table footer
             do_action('ssol_data_table_footer');
             // pagination
-            do_action('ssol_shutdown_pagination');
+            //  do_action('ssol_shutdown_pagination');
+
+            // Pagination
+            if ($ShutdownSearch->max_num_pages > 1) {
+                echo '<div class="ssol-county-pagination">';
+                echo paginate_links(array(
+                    'base' => admin_url('admin-ajax.php') . '?action=ssol_shutdown_submit_result&SSOL_State=' . $get_ssol_state . '&SSOL_County=' . $get_ssol_county . '&paged=%#%',
+                    'format' => '&paged=%#%',
+                    'current' => $paged,
+                    'total' => $ShutdownSearch->max_num_pages,
+                ));
+                echo '</div>';
+            }
+
             ?>
         </div>
     </div>

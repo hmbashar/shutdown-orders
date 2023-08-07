@@ -20,13 +20,13 @@
     margin: 0;
 }
 
-.ssol-shutdown-pagination .pagination .page-numbers{
+.ssol-shutdown-pagination .pagination .page-numbers, .ssol-county-pagination .page-numbers{
     background-color: #192C57;
     padding: 5px 10px;
     border-radius: 3px;
     color: #fff;
 }
-.ssol-shutdown-pagination .pagination .page-numbers:hover, .ssol-shutdown-pagination .pagination .page-numbers.current {
+.ssol-shutdown-pagination .pagination .page-numbers:hover, .ssol-shutdown-pagination .pagination .page-numbers.current, .ssol-county-pagination .page-numbers:hover, .ssol-county-pagination .page-numbers.current {
     background-color: #2caae2;
     color: #fff;
 }

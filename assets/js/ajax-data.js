@@ -1,31 +1,43 @@
-(function($) {
+(function ($) {
 
-	//$('#ssol-state, #ssol-county').on('change', function() {
-	$('#ssol-county').on('change', function() {
-		var SSOL_State = $('#ssol-state').val();
-		var SSOL_State_Child_county = $('#ssol-county').val();
-        
+	// Create a function to handle fetching posts
+	function fetchPosts(SSOL_State, SSOL_County, paged) {
 		$.ajax({
 			type: 'post',
-			url:ssol_option_data.ajaxurl,
+			url: ssol_option_data.ajaxurl,
 			data: {
-				action:'ssol_shutdown_submit_result',
-				SSOL_State:SSOL_State,
-				SSOL_County:SSOL_State_Child_county,
-				//Ali_nonce:SSOLNonce,
+				action: 'ssol_shutdown_submit_result',
+				SSOL_State: SSOL_State,
+				SSOL_County: SSOL_County,
+				paged: paged, // Send the page number
 			},
-			beforeSend:function() {
-               // console.log('before send');
-				//$('.cbwct_result_preload').addClass('cbwct_wc_order_tracker_loader');
+			beforeSend: function () {
+				// ...
 			},
-			success: function(data) {
-                //console.log('after send');
+			success: function (data) {
 				$('.ssol-ajax-show-all-data').html(data);
-				//$('.cbwct_result_preload').removeClass('cbwct_wc_order_tracker_loader');				
+				// ...
 			}
 		});
+	}
 
-		return false;
+	// Handle county select change
+	$('#ssol-county').on('change', function () {
+		var SSOL_State = $('#ssol-state').val();
+		var SSOL_County = $(this).val();
+
+		fetchPosts(SSOL_State, SSOL_County, 1); // Query the first page when county changes
 	});
+
+	// Handle pagination link clicks
+	$(document).on('click', '.ssol-county-pagination a', function (event) {
+		event.preventDefault();
+		var page = $(this).attr('href').split('paged=')[1]; // Extract page number from URL
+		var SSOL_State = $('#ssol-state').val();
+		var SSOL_County = $('#ssol-county').val();
+
+		fetchPosts(SSOL_State, SSOL_County, page); // Query specific page on pagination link click
+	});
+
 
 })(jQuery);
