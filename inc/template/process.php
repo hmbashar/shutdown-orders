@@ -35,7 +35,7 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
             $ShutdownSearch = new WP_Query(
                 array(
                     'post_type' => 'shutorder',
-                    'posts_per_page' => -1,
+                    'posts_per_page' => 1,
                     'paged' => $paged,
                     'tax_query' => array(
                         array(

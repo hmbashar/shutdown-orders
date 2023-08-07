@@ -32,7 +32,7 @@ define( 'SSOL_PLUGIN_DIR', plugin_dir_url( __FILE__ ));
 
 
 function ssol_load_plugin_textdomain() {
-  load_plugin_textdomain( 'ssol', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+  load_plugin_textdomain( 'ssol', false, SSOL_PLUGIN_PATH . 'languages/' );
 }
 add_action( 'plugins_loaded', 'ssol_load_plugin_textdomain' );
 

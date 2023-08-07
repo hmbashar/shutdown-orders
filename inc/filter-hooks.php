@@ -37,6 +37,6 @@ add_filter('ssol_county_label', 'ssol_county_label');
 // state archive heading
 function ssol_state_archive_heading()
 {
-    echo __('Shutdown Orders', 'ssol');
+    echo __(' State Orders', 'ssol');
 }
 add_filter('ssol_state_archive_heading', 'ssol_state_archive_heading');

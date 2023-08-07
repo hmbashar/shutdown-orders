@@ -40,7 +40,7 @@ $current_term_id = get_queried_object();
         }
 
         // get table header
-        require_once(SSOL_PLUGIN_PATH . 'inc/template/table-header.php');
+        do_action('ssol_data_table_header');
 
         // regular shutdown order query
         $shutdown = new WP_Query(
@@ -61,7 +61,7 @@ $current_term_id = get_queried_object();
         endif;
 
         // get table footer
-        require_once(SSOL_PLUGIN_PATH . 'inc/template/table-footer.php');
+        do_action('ssol_data_table_footer');
         ?>
     </div>
 </div>

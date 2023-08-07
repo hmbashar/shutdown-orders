@@ -31,7 +31,12 @@ $current_term_id = get_queried_object();
             <div class="ssol-state-order-list">
                 <div class="ssol-state-order-list">
 
-                    <h2 class="ssol-shutdown-order-heading"><?php single_term_title(); ?> State Orders</h2>
+                    <h2 class="ssol-shutdown-order-heading">
+                        <?php 
+                            single_term_title(); 
+                            do_action('ssol_state_archive_heading', ' Shutdown Orders');
+                        ?> 
+                    </h2>
                     <?php
 
                     // get table header
