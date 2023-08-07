@@ -66,9 +66,14 @@ add_filter('template_include', 'ssol_load_tamplate_from_plugin');
 function ssol_shutdown_submit_result()
 {
 
+    // Verify the nonce
+    if ( !isset($_POST['ssol_nonce']) || !wp_verify_nonce( $_POST['ssol_nonce'], 'ssol_nonce_action' ) ) {
+        wp_die('Permission error');
+    }else {
+        require_once(SSOL_PLUGIN_PATH . '/inc/template/process.php');
+    }
 
-
-    require_once(SSOL_PLUGIN_PATH . '/inc/template/process.php');
+    
 
 
     exit;

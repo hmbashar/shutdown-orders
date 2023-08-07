@@ -64,7 +64,7 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
             // get table footer
             do_action('ssol_data_table_footer');
             // pagination
-            //  do_action('ssol_shutdown_pagination');
+             do_action('ssol_shutdown_pagination');
 
             // Pagination
             if ($ShutdownSearch->max_num_pages > 1) {

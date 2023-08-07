@@ -79,6 +79,8 @@ function ssol_select_form($current_term_id)
 	?>
 	
 	<form action="" method="POST" class="ssol-shutdown-order-list">
+		<!-- Nonce Validation -->
+	<?php wp_nonce_field( 'ssol_nonce_action', 'ssol_nonce_field' ); ?>
 
 		<label for="ssol-state">
 			<?php apply_filters('ssol_state_label', 'State'); ?>
