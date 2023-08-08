@@ -1,3 +1,16 @@
+:root{
+    --ssol-primary-color:#004825;
+    --ssol-secondary-color:rgb(233, 180, 70);
+    --ssol-heading-color:#222525;
+    --ssol-text-color:#222525;
+}
+.ssol-container {
+    max-width: 1170px;
+    margin:0 auto;
+}
+.ssol-padding {
+    padding: 100px 0;
+}
 .ssol-short-order-area,
 .ssol-state-order-list-area, .ssol-single-state-archive-heading {
     max-width: 1140px;
@@ -29,4 +42,169 @@
 .ssol-shutdown-pagination .pagination .page-numbers:hover, .ssol-shutdown-pagination .pagination .page-numbers.current, .ssol-county-pagination .page-numbers:hover, .ssol-county-pagination .page-numbers.current {
     background-color: #2caae2;
     color: #fff;
+}
+
+
+/*----------------------
+Short Down Template
+-------------------------*/
+
+.ssol-state-list-banner-area {
+    background-color:var(--ssol-primary-color);
+}   
+.ssol-state-list-banner{
+    text-align: center;  
+    max-width: 1000px; 
+    margin:0 auto;     
+}
+.ssol-state-list-banner h2 {
+    color:#fff;
+    font-size: 2rem;
+}
+.ssol-state-list-banner p {
+    color:#fff;    
+    margin: 24px auto 10px;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 1.3rem;
+}
+.ssol-state-list-area  {
+}
+.ssol-state-list-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ssol-state-list-heading h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color:var(--ssol-heading-color);
+    font-weight: 600;
+}
+.ssol-state-list-heading p {
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color:var(--ssol-text-color)
+}
+.ssol-state-content-area {
+    display: flex;
+    gap: 100px;
+}
+.ssol-state-lsit-canvs-maps svg {
+    width: 100%;
+}
+.ssol-state-list-right {
+    flex-basis: 70%;
+}
+.stroke-slate-400 {
+    stroke: #94a3b8;
+}
+.fill-slate-50 {
+    fill: #f8fafc;
+}
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+.stroke-slate-400:hover {
+    stroke: #0284c7;
+}
+.fill-slate-50:hover {
+    fill: #e0f2fe;
+}
+.ssol-state-list-left {
+    margin-top: 150px;
+}
+.ssol-state-list-left h3 {
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color:var(--ssol-text-color)
+}
+.ssol-state-list-view {
+    margin:0;
+    padding:0;
+    border: 1px solid #94a3b845;
+    border-radius: 0.25rem;
+    overflow-y: scroll;
+    min-width: 250px;
+    height: 400px;
+    list-style: none;    
+}
+.ssol-state-list-view li a {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: block;
+    color:var(--ssol-text-color);
+}
+.ssol-state-list-view li a:hover {
+    background-color: var(--ssol-primary-color);
+    color: #fff;
+}
+
+.ssol-state-county-chart-area {
+    background-color: #f1f1f1;
+}
+.ssol-sate-county-title {
+    text-align: center;    
+}
+.ssol-sate-county-title h2 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    color:var(--ssol-heading-color);
+    font-weight: 600;
+}
+.ssol-sate-color-identify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    gap: 50px;
+    margin-bottom: 30px
+}
+.ssol-single-color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.ssol-single-color-box {
+    width:15px;
+    height: 15px;
+    display: block;
+}
+.ssol-single-color p {
+    margin: 0;
+}
+.ssol-box-state {
+    background-color: var(--ssol-primary-color);
+}
+.ssol-box-conuty {
+    background-color: var(--ssol-secondary-color);
+}
+
+.ssol-chartbar-data-area {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    max-width: 100%;
+}
+.js-plotly-plot .plotly .main-svg {
+    background-color: #e5e7eb00 !important;
+}
+
+.ssol-footer-content-area {
+
+}
+.ssol-footer-content p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color:var(--ssol-text-color);
+    margin: 0;  
 }

@@ -44,7 +44,7 @@ function ssol_bar_chart_data()
                     name: 'State',
                     type: 'bar',
                     marker: {
-                        color: 'rgb(24, 44, 86)'
+                        color: '#004825'
                     }
                 };
 
@@ -54,7 +54,7 @@ function ssol_bar_chart_data()
                     name: 'County',
                     type: 'bar',
                     marker: {
-                        color: 'rgb(45, 170, 228)'
+                        color: 'rgb(233, 180, 70)'
                     }
 
                 };
