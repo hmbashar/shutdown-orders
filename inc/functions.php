@@ -24,7 +24,7 @@ add_filter('enter_title_here', 'ssol_posttype_title_text');
 function ssol_tamplate_add_page_attribute_dropdown($post_templates, $wp_theme, $post, $post_type)
 {
 
-    $post_templates['shutdown.php'] = __('Shutdown Order', 'ssol');
+    $post_templates['ssolshutdown.php'] = __('Shutdown Order', 'ssol');
 
     return $post_templates;
 }
@@ -36,12 +36,12 @@ add_filter('theme_page_templates', 'ssol_tamplate_add_page_attribute_dropdown', 
 function ssol_load_tamplate_from_plugin($template)
 {
 
-    if (get_page_template_slug() === 'shutdown.php') {
+    if (get_page_template_slug() === 'ssolshutdown.php') {
 
-        if ($theme_file = locate_template(array('shutdown.php'))) {
+        if ($theme_file = locate_template(array('ssolshutdown.php'))) {
             $template = $theme_file;
         } else {
-            $template = SSOL_PLUGIN_PATH . 'inc/template/shutdown.php';
+            $template = SSOL_PLUGIN_PATH . 'inc/template/ssolshutdown.php';
         }
     }
 
