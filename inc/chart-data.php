@@ -5,6 +5,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 function ssol_bar_chart_data()
 {
+    if ( is_page_template( 'shutdown.php' ) ) { // check if this templete then show the chart data
 
     // Get the taxonomy's terms
     $terms = get_terms(
@@ -106,6 +107,9 @@ function ssol_bar_chart_data()
     </script>
 
 <?php
+    } // condation end for page template
 }
 
 add_action('wp_footer', 'ssol_bar_chart_data');
+
+

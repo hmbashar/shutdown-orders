@@ -67,13 +67,13 @@ function ssol_shutdown_submit_result()
 {
 
     // Verify the nonce
-    if ( !isset($_POST['ssol_nonce']) || !wp_verify_nonce( $_POST['ssol_nonce'], 'ssol_nonce_action' ) ) {
+    if (!isset($_POST['ssol_nonce']) || !wp_verify_nonce($_POST['ssol_nonce'], 'ssol_nonce_action')) {
         wp_die('Permission error');
-    }else {
+    } else {
         require_once(SSOL_PLUGIN_PATH . '/inc/template/process.php');
     }
 
-    
+
 
 
     exit;
@@ -108,7 +108,7 @@ function ssol_shutdown_state_to_child()
         <?php endforeach; ?>
     </select>
 
-    <?php
+<?php
 
     exit;
 }
@@ -151,7 +151,8 @@ function ssol_get_terms_postcount($id, $taxonomyName, $includeParent = false)
 }
 
 // Register the custom template for 'ssol-category' taxonomy
-function custom_ssol_category_template($template) {
+function custom_ssol_category_template($template)
+{
     if (is_tax('ssol-category')) {
 
         $template = SSOL_PLUGIN_PATH . 'inc/taxonomy-ssol-category.php';
@@ -162,10 +163,14 @@ add_filter('template_include', 'custom_ssol_category_template');
 
 
 // Change the query for 'ssol-category' taxonomy archive page
-function custom_taxonomy_archive_query($query) {
+function custom_taxonomy_archive_query($query)
+{
     if (is_tax('ssol-category') && $query->is_main_query()) {
         $query->set('post_type', 'shutorder'); // Set the post type to 'post'
         $query->set('posts_per_page', 1); // Set the number of posts per page (change it as needed)
     }
 }
 add_action('pre_get_posts', 'custom_taxonomy_archive_query');
+
+
+

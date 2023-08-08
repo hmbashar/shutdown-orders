@@ -15,8 +15,7 @@ $current_term_id = get_queried_object();
         <div class="ssol-short-order-area">
             <div class="ssol-short-order">
 
-                <!--Chart Area-->
-                <div id='ssol_chart_data'></div><!--Chart Area-->
+              
 
                 <?php do_action('ssol_select_form', $current_term_id); ?>
             </div>

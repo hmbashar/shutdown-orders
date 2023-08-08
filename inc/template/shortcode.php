@@ -44,3 +44,25 @@ function ssol_state_list_shortcode($attrs, $content = NULL)
     return ob_get_clean();
 }
 add_shortcode('ssol_state_list', 'ssol_state_list_shortcode');
+
+
+
+// Register Shortcode for chart list
+function ssol_chart_shortcode($attrs, $content = NULL)
+{
+    ob_start();
+    extract(shortcode_atts(array(
+
+        'taxonomy'      => 'ssol-category',
+
+    ), $attrs));
+
+?>
+  <!--Chart Area-->
+  <div id='ssol_chart_data'></div><!--Chart Area-->
+
+<?php 
+
+    return ob_get_clean();
+}
+add_shortcode('ssol_chart_data', 'ssol_chart_shortcode');
