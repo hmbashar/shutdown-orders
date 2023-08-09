@@ -10,25 +10,12 @@ function ssol_posts_number_of_pages($current_page, $total_pages)
 }
 add_action('ssol_posts_number_of_pages', 'ssol_posts_number_of_pages', 10, 2);
 
-// pagination hook
-function ssol_shutdown_pagination()
-{
+
+
+
+// numbering pagination
+function ssol_numbering_pagination(){
 ?>
-	<!-- Pagination Area Start -->
-	<div class="ssol-shutdown-pagination-area">
-		<!-- Number of posts -->
-		<div class="ssol-shutdown-nfp">
-			<?php
-			// Display 'Page X of Y'
-			global $wp_query;
-			$total_pages = $wp_query->max_num_pages;
-			$current_page = max(1, get_query_var('paged'));
-
-			do_action('ssol_posts_number_of_pages', $current_page, $total_pages);
-
-			?>
-		</div><!-- Number of posts -->
-
 		<div class="ssol-shutdown-pagination">
 			<?php
 			the_posts_pagination(array(
@@ -39,6 +26,48 @@ function ssol_shutdown_pagination()
 			));
 			?>
 		</div>
+<?php
+}
+add_action('ssol_numbering_pagination', 'ssol_numbering_pagination');
+
+
+//number of posts ( Display 'Page X of Y' )
+function ssol_number_of_pages_xoy()
+{
+?>
+	<!-- Number of posts -->
+	<div class="ssol-shutdown-nfp">
+		<?php
+		// Display 'Page X of Y'
+		global $wp_query;
+		$total_pages = $wp_query->max_num_pages;
+		$current_page = max(1, get_query_var('paged'));
+
+		do_action('ssol_posts_number_of_pages', $current_page, $total_pages);
+
+		?>
+	</div><!-- Number of posts -->
+
+<?php
+}
+add_action('ssol_number_of_pages_xoy', 'ssol_number_of_pages_xoy');
+
+
+//pagination with full markup
+function ssol_shutdown_pagination()
+{
+?>
+	<!-- Pagination Area Start -->
+	<div class="ssol-shutdown-pagination-area">
+
+		<?php 
+			//number of posts ( Display 'Page X of Y' )
+			do_action('ssol_number_of_pages_xoy');
+			//numbering pagination
+			do_action('ssol_numbering_pagination'); 
+		
+		?>
+
 	</div><!-- Pagination Area End -->
 <?php
 }
@@ -60,30 +89,30 @@ function ssol_data_table_header()
 				<th>Source</th>
 			</thead>
 			<tbody>
-		<?php
-	}
-add_action('ssol_data_table_header', 'ssol_data_table_header');
+			<?php
+		}
+		add_action('ssol_data_table_header', 'ssol_data_table_header');
 
 
 
-// table footer
-function ssol_data_table_footer()
-	{
-		?>
+		// table footer
+		function ssol_data_table_footer()
+		{
+			?>
 			</tbody>
 		</table>
 	</div>
 <?php
-	}
-	add_action('ssol_data_table_footer', 'ssol_data_table_footer');
+		}
+		add_action('ssol_data_table_footer', 'ssol_data_table_footer');
 
 
 
-	// form for select state
-	function ssol_select_form($current_term_id)
-	{
+		// form for select state
+		function ssol_select_form($current_term_id)
+		{
 
-		//apply_filters('ssol_find_your_state', 'Find your state');
+			//apply_filters('ssol_find_your_state', 'Find your state');
 ?>
 	<!--Form Start-->
 	<form action="" method="POST" class="ssol-shutdown-order-list">
@@ -157,13 +186,13 @@ function ssol_data_table_footer()
 		</div><!--/ Sate to child (county) Forms -->
 	</form><!--Form End-->
 <?php
-	}
-add_action('ssol_select_form', 'ssol_select_form');
+		}
+		add_action('ssol_select_form', 'ssol_select_form');
 
 
-// ajax show all data for county
-function ssol_ajax_show_all_data()
-{
-	echo '<div class="ssol-ajax-show-all-data"></div>';
-}
-add_action('ssol_ajax_show_all_data', 'ssol_ajax_show_all_data');
+		// ajax show all data for county
+		function ssol_ajax_show_all_data()
+		{
+			echo '<div class="ssol-ajax-show-all-data"></div>';
+		}
+		add_action('ssol_ajax_show_all_data', 'ssol_ajax_show_all_data');

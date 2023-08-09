@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) exit;
 get_header();
 
 
-// it's wrong way to get current term id, because of it's not a tarm page, it's a regular page, so it should be change later, I wil change it leter
+// get term id (current term id)
 $current_term_id = get_queried_object();
 ?>
 

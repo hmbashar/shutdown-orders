@@ -43,7 +43,7 @@ add_action('plugins_loaded', 'ssol_load_plugin_textdomain');
 //Supreox Order List
 function ssol_script_enqueues()
 {
-
+  $current_term_id = get_queried_object_id(); // Assuming you're on a taxonomy term archive page
 
   // Main Stylesheet
   wp_enqueue_style('ssol-stylesheet', SSOL_PLUGIN_DIR . 'assets/css/style.css', NULL, SSOL_VERSION);
@@ -55,7 +55,12 @@ function ssol_script_enqueues()
   wp_enqueue_script('ssol-custom-js', SSOL_PLUGIN_DIR . 'assets/js/custom.js', array('jquery'), true);
 
   // localization for ajax action state to child 
-  wp_localize_script('ssol-custom-js', 'ssol_custom_js', array('ajaxurl'  => admin_url('admin-ajax.php'), 'posts_per_page' => 5));
+    wp_localize_script('ssol-custom-js', 'custom_ajax_object', array(
+      'ajax_url' => admin_url('admin-ajax.php'),
+      'posts_per_page' => 1,
+      'current_term_id' => $current_term_id, // Pass the current term ID
+  ));
+
 
   // custom chart
   wp_enqueue_script('ssol-custom-chart', SSOL_PLUGIN_DIR . 'assets/js/plotly-2.24.1.min.js', array('jquery'), true);

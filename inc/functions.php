@@ -174,3 +174,57 @@ add_action('pre_get_posts', 'custom_taxonomy_archive_query');
 
 
 
+
+function custom_ajax_pagination()
+{
+
+    $paged = $_POST['page'];
+    $post_type = $_POST['post_type'];
+    $term_id = $_POST['term_id'];
+    // get table header
+    do_action('ssol_data_table_header');
+
+    $args = array(
+        'post_type' => $post_type,
+        'posts_per_page' => 1,
+        'paged' => $paged,
+        'tax_query' => array(
+            array(
+                // taxonomy name
+                'taxonomy' => 'ssol-category',
+                // term type
+                'field' => 'term_id',
+                // term id
+                'terms' => $term_id,
+            )
+        ),
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
+        }
+    }
+    // get table footer
+    do_action('ssol_data_table_footer');
+
+    wp_reset_postdata();
+?>
+
+
+    <!-- Pagination Area Start -->
+    <div class="ssol-shutdown-pagination-area">
+        <!-- number of pages  -->
+        <div class="ssol-ajax-county-nfp">
+            <?php do_action('ssol_posts_number_of_pages', $paged, $query->max_num_pages);  ?>
+        </div><!-- number of pages  -->      
+    </div><!-- Pagination Area End -->
+<?php
+
+    die();
+}
+add_action('wp_ajax_custom_ajax_pagination', 'custom_ajax_pagination');
+add_action('wp_ajax_nopriv_custom_ajax_pagination', 'custom_ajax_pagination');

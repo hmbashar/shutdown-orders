@@ -1,6 +1,8 @@
 <?php
 get_header();
 
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
 // get the current taxonomy term id
 $current_term_id = get_queried_object();
 ?>
@@ -47,33 +49,25 @@ $current_term_id = get_queried_object();
                         do_action('ssol_state_archive_heading', ' Shutdown Orders');
                         ?>
                     </h2>
-                    <?php
 
-                    // get table header
-                    do_action('ssol_data_table_header');
+                    <!--Ajax Post will be loaded here-->
+                    <div id="ssol-single-term-post-ajax-container">
+                        <!-- Posts will be loaded here -->
+                    </div><!--/ Ajax Post will be loaded here-->
 
-                    if (have_posts()) : ?>
-                        <?php while (have_posts()) : the_post();
-
-                            require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
-
-                        endwhile;
-
+                    <!-- Pagination Area Start -->
+                                         
+                        <?php
+                        //numbering pagination
+                           do_action('ssol_numbering_pagination');
                         ?>
-                    <?php else :
-                    ?>
-                        <p><?php _e('No Order found.'); ?></p>
-                    <?php endif;
-                    // get table footer
-                    do_action('ssol_data_table_footer');
-                    // get pagination
-                    do_action('ssol_shutdown_pagination');
+                  <!-- Pagination Area End -->
 
-                    ?>
 
                 </div>
             </div>
         </div><!--/ Show State Data for current term page -->
+
 
         <!--footer content-->
         <section class="ssol-footer-content-area ssol-padding">
@@ -85,5 +79,6 @@ $current_term_id = get_queried_object();
         </section><!--/ footer content-->
     </section>
 </main>
+
 
 <?php get_footer(); ?>
