@@ -5,18 +5,28 @@ get_header();
 $current_term_id = get_queried_object();
 ?>
 
-<div class="ssol-single-state-archive-area">
+
+<main class="ssol-single-state-archive-area">
     <div class="ssol-single-state-archive">
-        <h1 class="ssol-single-state-archive-heading">
-            <span><?php single_term_title(); ?></span> <br>
-            <?php apply_filters('ssol_state_archive_heading', 'Shutdown Orders'); ?>
-        </h1>
+        <!--Banner Area-->
+        <section class="ssol-state-list-banner-area ssol-padding">
+            <div class="ssol-state-list-banner ssol-container">
+                <div class="ssol-back-to-all-state">
+                    <a href=""><img src="<?php echo SSOL_PLUGIN_DIR ?>/assets/img/arrow.svg" alt=""> Back To All Sates</a>
+                </div>
+                <h1 class="ssol-single-state-archive-heading">
+                    <span><?php single_term_title(); ?></span> <br>
+                    <?php apply_filters('ssol_state_archive_heading', 'Shutdown Orders'); ?>
+                </h1>
+
+                </p>
+            </div>
+        </section><!--/ Banner Area-->
+
+
 
         <div class="ssol-short-order-area">
             <div class="ssol-short-order">
-
-              
-
                 <?php do_action('ssol_select_form', $current_term_id); ?>
             </div>
         </div>
@@ -31,10 +41,10 @@ $current_term_id = get_queried_object();
                 <div class="ssol-state-order-list">
 
                     <h2 class="ssol-shutdown-order-heading">
-                        <?php 
-                            single_term_title(); 
-                            do_action('ssol_state_archive_heading', ' Shutdown Orders');
-                        ?> 
+                        <?php
+                        single_term_title();
+                        do_action('ssol_state_archive_heading', ' Shutdown Orders');
+                        ?>
                     </h2>
                     <?php
 
@@ -66,5 +76,6 @@ $current_term_id = get_queried_object();
 
         </div>
     </div>
+</main>
 
-    <?php get_footer(); ?>
+<?php get_footer(); ?>

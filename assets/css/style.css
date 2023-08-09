@@ -54,7 +54,6 @@ Short Down Template
 }   
 .ssol-state-list-banner{
     text-align: center;  
-    max-width: 1000px; 
     margin:0 auto;     
 }
 .ssol-state-list-banner h2 {
@@ -207,4 +206,33 @@ Short Down Template
     line-height: 1.5rem;
     color:var(--ssol-text-color);
     margin: 0;  
+}
+
+/*----------------------
+* Shutdown Taxonomy Template
+-------------------------*/
+.ssol-back-to-all-state a {
+    color: #fff;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.ssol-back-to-all-state a:hover {
+    color: var(--ssol-secondary-color)
+}
+.ssol-back-to-all-state img {
+    fill:#fff;
+    color:#fff;
+    width: 20px;    
+}
+.ssol-single-state-archive-area .ssol-state-list-banner {
+    text-align: left;
+}
+.ssol-single-state-archive-heading {
+    color:#fff;
+}
+.ssol-single-state-archive-heading span  {
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 800;
 }
