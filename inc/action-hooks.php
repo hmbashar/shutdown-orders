@@ -50,28 +50,29 @@ add_action('ssol_shutdown_pagination', 'ssol_shutdown_pagination');
 function ssol_data_table_header()
 {
 ?>
-	<table>
-		<thead>
-			<th>Dates of Order</th>
-			<th>Order Title</th>
-			<th>Affecting</th>
-			<th>Order</th>
-			<th>Source</th>
-		</thead>
-		<tbody>
+	<div class="ssol-show-data-table-area">
+		<table>
+			<thead>
+				<th>Dates of Order</th>
+				<th>Order Title</th>
+				<th>Affecting</th>
+				<th>Order</th>
+				<th>Source</th>
+			</thead>
+			<tbody>
 		<?php
 	}
-	add_action('ssol_data_table_header', 'ssol_data_table_header');
+add_action('ssol_data_table_header', 'ssol_data_table_header');
 
 
 
-	// table footer
-	function ssol_data_table_footer()
+// table footer
+function ssol_data_table_footer()
 	{
 		?>
-
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+	</div>
 <?php
 	}
 	add_action('ssol_data_table_footer', 'ssol_data_table_footer');

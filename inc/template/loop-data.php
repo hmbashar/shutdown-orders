@@ -24,12 +24,12 @@ $shutdown_order_source = get_post_meta(get_the_ID(), 'ssol-order-source',  true)
 
     <?php if (!empty($shutdown_order_link)) : ?>
 
-        <td><a href="<?php echo esc_url($shutdown_order_link); ?>">Link</a></td>
+        <td><a  class="ssol-shutdown-details-url" href="<?php echo esc_url($shutdown_order_link); ?>" target="_blank"><img src="<?php echo SSOL_PLUGIN_DIR;?>/assets/img/link.svg" alt="Order Link"></a></td>
 
     <?php endif; ?>
 
     <?php if (!empty($shutdown_order_source)) : ?>
-        <td><a href="<?php echo esc_url($shutdown_order_source); ?>">Link</a></td>
+        <td><a class="ssol-shutdown-details-url" href="<?php echo esc_url($shutdown_order_source); ?>" target="_blank"><img src="<?php echo SSOL_PLUGIN_DIR;?>/assets/img/link.svg" alt="source url"></a></td>
     <?php endif; ?>
 
 </tr>

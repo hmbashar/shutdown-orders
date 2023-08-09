@@ -12,7 +12,7 @@ $current_term_id = get_queried_object();
 
 <!--Banner Area-->
 <section class="ssol-state-list-banner-area ssol-padding">
-    <div class="ssol-state-list-banner">
+    <div class="ssol-state-list-banner ssol-container">
         <h2>State and Local Government<br>
             COVID-19 Shutdown Orders</h2>
         <p>Since shutdown orders are used to determine eligibility for ERC, we've compiled one of the most thorough compilations of government shutdown orders and are making it available completely free of charge.

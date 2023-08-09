@@ -44,9 +44,27 @@
     color: #fff;
 }
 
-
+/*-------------------------------------
+* State to Child/county form style
+---------------------------------------*/
+.ssol-state-to-child-form {
+    display: flex;
+    gap: 30px;
+}
+.ssol-state-to-child-form label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.ssol-state-to-child-form select {
+    border: 1px solid #94a3b845;
+    min-height: 40px;
+}
+.ssol-state-to-child-form select option {
+    font-weight: 300;
+}
 /*----------------------
-Short Down Template
+ShutDown Template
 -------------------------*/
 
 .ssol-state-list-banner-area {
@@ -235,4 +253,42 @@ Short Down Template
     font-size: 3rem;
     line-height: 1;
     font-weight: 800;
+}
+
+/*-------------------------
+* Table Design
+*--------------------------*/
+.ssol-show-data-table-area{}
+.ssol-show-data-table-area table {
+    border-radius: 1rem;
+}
+.ssol-show-data-table-area tr {
+   text-align:left;
+}
+.ssol-show-data-table-area th {
+    font-weight: 700;
+    vertical-align: middle;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: rgb(248, 250, 252);
+    color: var(--ssol-heading-color);
+    border-color:#e5e7eb !important;
+}
+.ssol-show-data-table-area td {
+    background-color: transparent !important;
+    vertical-align: middle;
+    font-weight: 300;
+    color:var(--ssol-text-color);
+    border-color:#e5e7eb !important;
+}
+.ssol-shutdown-order-heading {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    color:var(--ssol-heading-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.ssol-shutdown-details-url img{max-width: 22px;}
+.ssol-shutdown-details-url {
+    display: block;
 }
