@@ -1,0 +1,63 @@
+@media only screen and (max-width: 768px) {
+    .ssol-container {
+        max-width: 100%;
+    }
+
+    .ssol-padding {
+        padding: 50px 30px;
+    }
+
+    .ssol-short-order-area {
+        padding: 0 20px;
+    }
+
+    .ssol-state-order-list-area {
+        padding: 0 20px;
+    }
+
+    .ssol-single-state-archive-heading {
+        font-size: 2rem;
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+
+    .ssol-single-state-archive-heading span {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
+}
+
+
+
+@media only screen and (max-width: 500px) {
+    .ssol-container {
+        max-width: 100%;
+    }
+
+    .ssol-padding {
+        padding: 50px 10px;
+    }
+
+    .ssol-single-state-archive-heading {
+        font-size: 1rem;
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+
+    .ssol-single-state-archive-heading span {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .ssol-short-order-area {
+        padding: 0 20px;
+    }
+
+    .ssol-state-order-list-area {
+        padding: 0 20px;
+    }
+
+    .ssol-state-list-banner p {
+        font-size: 0.75rem;
+    }
+}

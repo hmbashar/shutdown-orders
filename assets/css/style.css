@@ -12,8 +12,7 @@
     padding: 100px 0;
 }
 .ssol-short-order-area,
-.ssol-state-order-list-area, .ssol-single-state-archive-heading {
-    max-width: 1140px;
+.ssol-state-order-list-area, .ssol-single-state-archive-heading {    
     margin: 50px auto;
 }
 

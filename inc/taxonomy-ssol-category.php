@@ -21,7 +21,7 @@ $current_term_id = get_queried_object();
                     <?php apply_filters('ssol_state_archive_heading', 'Shutdown Orders'); ?>
                 </h1>
 
-                </p>
+                <p>Since shutdown orders are used to determine eligibility for ERC, we've compiled one of the most thorough compilations of government shutdown orders and are making it available completely free of charge.</p>
             </div>
         </section><!--/ Banner Area-->
 
