@@ -66,3 +66,7 @@ function ssol_chart_shortcode($attrs, $content = NULL)
     return ob_get_clean();
 }
 add_shortcode('ssol_chart_data', 'ssol_chart_shortcode');
+
+
+// register shortcode for ajax show all data this function is in inc/action-hooks.php
+add_shortcode('ssol_ajax_show_all_data', 'ssol_ajax_show_all_data');
