@@ -17,7 +17,7 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
 } else {
 ?>
     <div class="ssol-state-order-list-area">
-        <div class="ssol-state-order-list">
+        <div class="ssol-state-order-list ssol-container">
             <?php
             $selected_terms = get_term_by('slug', $get_ssol_county, 'ssol-category');   // get selected taxonomy term by slug                   
             ?>

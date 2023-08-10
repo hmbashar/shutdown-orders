@@ -28,7 +28,7 @@ $current_term_id = get_queried_object();
 
 
         <div class="ssol-short-order-area">
-            <div class="ssol-short-order">
+            <div class="ssol-short-order ssol-container">
                 <?php do_action('ssol_select_form', $current_term_id); ?>
             </div>
         </div>
@@ -40,7 +40,7 @@ $current_term_id = get_queried_object();
 
         <!-- Show State Data for current term page -->
         <div class="ssol-state-order-list-area">
-            <div class="ssol-state-order-list">
+            <div class="ssol-state-order-list ssol-container">
                 <div class="ssol-state-order-list">
 
                     <h2 class="ssol-shutdown-order-heading">

@@ -25,6 +25,18 @@
         font-size: 2.5rem;
         line-height: 2.5rem;
     }
+    .ssol-state-list-heading {
+        flex-direction: column;
+    }
+    .ssol-state-list-left {
+        margin-top: 10px;
+    }
+    .ssol-state-content-area {
+        gap: 50px;
+    }
+    .ssol-state-list-right {
+        margin-top: 20px;
+    }
 }
 
 
@@ -60,4 +72,27 @@
     .ssol-state-list-banner p {
         font-size: 0.75rem;
     }
+    .ssol-show-data-table-area {
+        overflow-y: scroll;
+    }
+    .ssol-state-list-heading {
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    .ssol-state-content-area {
+        gap: 0;
+        flex-direction: column;
+    }
+    .ssol-state-list-left {
+        margin-top: 20px;
+    }
+    .ssol-state-list-right {
+        flex-basis: 100%;
+        margin-top: 20px;
+    }
+    .ssol-state-list-banner h2 {
+        font-size: 1.5rem;
+    }
+
 }
