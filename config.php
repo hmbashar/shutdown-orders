@@ -55,7 +55,7 @@ function ssol_script_enqueues()
   wp_enqueue_script('ssol-custom-js', SSOL_PLUGIN_DIR . 'assets/js/custom.js', array('jquery'), true);
 
   // localization for ajax action state to child 
-    wp_localize_script('ssol-custom-js', 'custom_ajax_object', array(
+    wp_localize_script('ssol-custom-js', 'ssol_custom_ajax', array(
       'ajax_url' => admin_url('admin-ajax.php'),
       'posts_per_page' => 1,
       'current_term_id' => $current_term_id, // Pass the current term ID

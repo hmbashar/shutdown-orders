@@ -174,8 +174,8 @@ add_action('pre_get_posts', 'custom_taxonomy_archive_query');
 
 
 
-
-function custom_ajax_pagination()
+// Ajax action function for state (single term page)
+function ssol_single_term_page_posts()
 {
 
     $paged = $_POST['page'];
@@ -216,5 +216,5 @@ function custom_ajax_pagination()
 
     die();
 }
-add_action('wp_ajax_custom_ajax_pagination', 'custom_ajax_pagination');
-add_action('wp_ajax_nopriv_custom_ajax_pagination', 'custom_ajax_pagination');
+add_action('wp_ajax_ssol_single_term_page_posts', 'ssol_single_term_page_posts');
+add_action('wp_ajax_nopriv_ssol_single_term_page_posts', 'ssol_single_term_page_posts');

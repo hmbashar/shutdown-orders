@@ -1,24 +1,24 @@
 (function ($) {
     jQuery(document).ready(function ($) {
         var loading = false;
-        var currentTermID = custom_ajax_object.current_term_id;
+        var currentTermID = ssol_custom_ajax.current_term_id;
         function loadPosts(page) {
             if (loading) return;
             loading = true;
 
             $.ajax({
-                url: custom_ajax_object.ajax_url,
+                url: ssol_custom_ajax.ajax_url,
                 type: 'POST',
 
                 data: {
-                    action: 'custom_ajax_pagination',
+                    action: 'ssol_single_term_page_posts',
                     page: page,
                     post_type: 'shutorder', // custom post type
                     term_id: currentTermID,
                 },
                 success: function (response) {
                     $('#ssol-single-term-post-ajax-container').html(response);
-                    
+
                     // Update total number of pages               
                     $('.ssol-tax-qur-current-page').text(page);
 
