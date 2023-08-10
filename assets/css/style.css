@@ -253,7 +253,9 @@ ShutDown Template
     line-height: 1;
     font-weight: 800;
 }
-
+.ssol-shutdown-pagination .page-numbers {
+    cursor: pointer;
+}
 /*-------------------------
 * Table Design
 *--------------------------*/

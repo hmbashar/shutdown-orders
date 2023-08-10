@@ -55,15 +55,44 @@ $current_term_id = get_queried_object();
                         <!-- Posts will be loaded here -->
                     </div><!--/ Ajax Post will be loaded here-->
 
+                    
+
+                    <?php
+                    // Add the custom loop for pagination
+                    $args = array(
+                        'post_type' => 'shutorder',
+                        'posts_per_page' => 1,
+                        'paged' => $paged,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'ssol-category',
+                                'field' => 'term_id',
+                                'terms' => $current_term_id->term_id,
+                                'include_children' => false,
+                            )
+                        ),
+                    );
+                        $query = new WP_Query($args);
+                    ?>
                     <!-- Pagination Area Start -->
-                                         
-                        <?php
-                        //numbering pagination
-                           do_action('ssol_numbering_pagination');
-                        ?>
-                  <!-- Pagination Area End -->
+                    <div class="ssol-shutdown-pagination-area">
+                        <!-- number of pages  -->
+                        <div class="ssol-ajax-county-nfp">
+                            <?php echo sprintf(__('Page <span class="ssol-tax-qur-current-page"> %1$d </span> of <span class="total-pages">%2$d</span>', 'ssol'), $paged, $query->max_num_pages) ?>
+                        </div><!-- number of pages  -->
 
-
+                        <!-- Pagination -->
+                        <div class="ssol-shutdown-pagination">
+                            <div class="pagination">
+                                <?php
+                                echo paginate_links(array(
+                                    'total' => $query->max_num_pages,
+                                    'current' => $paged,
+                                ));
+                                ?>
+                            </div>
+                        </div><!--/ Pagination -->
+                    </div><!-- Pagination Area End -->
                 </div>
             </div>
         </div><!--/ Show State Data for current term page -->

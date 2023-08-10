@@ -195,7 +195,7 @@ function custom_ajax_pagination()
                 // term type
                 'field' => 'term_id',
                 // term id
-                'terms' => $term_id,
+                'terms' => $term_id,               
             )
         ),
     );
@@ -212,17 +212,7 @@ function custom_ajax_pagination()
     do_action('ssol_data_table_footer');
 
     wp_reset_postdata();
-?>
 
-
-    <!-- Pagination Area Start -->
-    <div class="ssol-shutdown-pagination-area">
-        <!-- number of pages  -->
-        <div class="ssol-ajax-county-nfp">
-            <?php do_action('ssol_posts_number_of_pages', $paged, $query->max_num_pages);  ?>
-        </div><!-- number of pages  -->      
-    </div><!-- Pagination Area End -->
-<?php
 
     die();
 }
