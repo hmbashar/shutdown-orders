@@ -177,6 +177,10 @@ add_action('pre_get_posts', 'custom_taxonomy_archive_query');
 // Ajax action function for state (single term page)
 function ssol_single_term_page_posts()
 {
+    // Verify the nonce
+    if (!isset($_POST['ssol_nonce']) || !wp_verify_nonce($_POST['ssol_nonce'], 'ssol_nonce_action')) {
+        wp_die('Permission error');
+    } else {
 
     $paged = $_POST['page'];
     $post_type = $_POST['post_type'];
@@ -213,7 +217,7 @@ function ssol_single_term_page_posts()
 
     wp_reset_postdata();
 
-
+}
     die();
 }
 add_action('wp_ajax_ssol_single_term_page_posts', 'ssol_single_term_page_posts');

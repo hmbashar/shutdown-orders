@@ -2,6 +2,8 @@
     jQuery(document).ready(function ($) {
         var loading = false;
         var currentTermID = ssol_custom_ajax.current_term_id;
+        var nonce = $('#ssol_nonce_field').val(); // Get the nonce from a hidden field
+
         function ssolSingleTermloadPosts(page) {
             if (loading) return;
             loading = true;
@@ -15,6 +17,7 @@
                     page: page,
                     post_type: 'shutorder', // custom post type
                     term_id: currentTermID,
+                    ssol_nonce: nonce // Add the nonce
                 },
                 success: function (response) {
                     $('#ssol-single-term-post-ajax-container').html(response);
