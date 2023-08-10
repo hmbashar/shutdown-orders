@@ -3,9 +3,9 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 
-function ssol_bar_chart_data()
+function ssol_bar_chart_data($newPlotID = 'ssol_chart_data')
 {
-    if ( is_page_template( 'ssolshutdown.php' ) ) { // check if this templete then show the chart data
+  //  if ( is_page_template( 'ssolshutdown.php' ) ) { // check if this templete then show the chart data
 
     // Get the taxonomy's terms
     $terms = get_terms(
@@ -103,13 +103,13 @@ function ssol_bar_chart_data()
             // },
         };
 
-        Plotly.newPlot('ssol_chart_data', datas, layout);
+        Plotly.newPlot(<?php echo $newPlotID?>, datas, layout);
     </script>
 
 <?php
-    } // condation end for page template
+   // } // condation end for page template
 }
 
-add_action('wp_footer', 'ssol_bar_chart_data');
+//add_action('wp_footer', 'ssol_bar_chart_data');
 
 

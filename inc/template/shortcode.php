@@ -57,12 +57,13 @@ function ssol_chart_shortcode($attrs, $content = NULL)
 
     ), $attrs));
 
+    
 ?>
   <!--Chart Area-->
   <div id='ssol_chart_data'></div><!--Chart Area-->
 
 <?php 
-
+    ssol_bar_chart_data('ssol_chart_data');
     return ob_get_clean();
 }
 add_shortcode('ssol_chart_data', 'ssol_chart_shortcode');
