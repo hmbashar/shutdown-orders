@@ -95,8 +95,8 @@ function ssol_data_table_header()
 
 
 
-		// table footer
-		function ssol_data_table_footer()
+// table footer
+function ssol_data_table_footer()
 		{
 			?>
 			</tbody>
@@ -104,12 +104,12 @@ function ssol_data_table_header()
 	</div>
 <?php
 		}
-		add_action('ssol_data_table_footer', 'ssol_data_table_footer');
+add_action('ssol_data_table_footer', 'ssol_data_table_footer');
 
 
 
-		// form for select state
-		function ssol_select_form($current_term_id)
+// form for select state
+function ssol_select_form($current_term_id)
 		{
 
 			//apply_filters('ssol_find_your_state', 'Find your state');
@@ -186,13 +186,28 @@ function ssol_data_table_header()
 		</div><!--/ Sate to child (county) Forms -->
 	</form><!--Form End-->
 <?php
-		}
-		add_action('ssol_select_form', 'ssol_select_form');
+}
+add_action('ssol_select_form', 'ssol_select_form');
 
 
-		// ajax show all data for county
-		function ssol_ajax_show_all_data()
-		{
-			echo '<div class="ssol-ajax-show-all-data"></div>';
-		}
-		add_action('ssol_ajax_show_all_data', 'ssol_ajax_show_all_data');
+// ajax show all data for county
+function ssol_ajax_show_all_data()
+{
+	echo '<div class="ssol-ajax-show-all-data"></div>';
+}
+add_action('ssol_ajax_show_all_data', 'ssol_ajax_show_all_data');
+
+
+// ajax preloader
+function ssol_preloader($id = null) {
+	?>
+	<div class="ssol-show-posts-pre-loading" id="<?php echo $id; ?>">
+		<span class="ssol-circle"></span>
+		<span class="ssol-circle"></span>
+		<span class="ssol-circle"></span>
+		<span class="ssol-circle"></span>
+	</div><!--/ Preloading-->
+<?php
+}
+
+add_action('ssol_preloader', 'ssol_preloader', 10, 1);

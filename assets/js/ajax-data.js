@@ -13,11 +13,14 @@
 				ssol_nonce: nonce // Add the nonce
 			},
 			beforeSend: function () {
-				// ...
+				// Show preloader
+				$('#ssol_county_ajax_posts.ssol-show-posts-pre-loading').addClass('ssol-pre-active');
 			},
 			success: function (data) {
 				$('.ssol-ajax-show-all-data').html(data);
-				// ...
+
+				// Hide preloader
+				$('#ssol_county_ajax_posts.ssol-show-posts-pre-loading').removeClass('ssol-pre-active');
 			}
 		});
 	}

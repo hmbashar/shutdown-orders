@@ -1,18 +1,22 @@
-:root{
-    --ssol-primary-color:#004825;
-    --ssol-secondary-color:rgb(233, 180, 70);
-    --ssol-heading-color:#222525;
-    --ssol-text-color:#222525;
+:root {
+    --ssol-primary-color: #004825;
+    --ssol-secondary-color: rgb(233, 180, 70);
+    --ssol-heading-color: #222525;
+    --ssol-text-color: #222525;
 }
+
 .ssol-container {
     max-width: 1170px;
-    margin:0 auto;
+    margin: 0 auto;
 }
+
 .ssol-padding {
     padding: 100px 0;
 }
+
 .ssol-short-order-area,
-.ssol-state-order-list-area, .ssol-single-state-archive-heading {    
+.ssol-state-order-list-area,
+.ssol-single-state-archive-heading {
     margin: 50px auto;
 }
 
@@ -21,7 +25,8 @@
     display: none !important;
 }
 
-.ssol-shutdown-pagination-area, .ssol-ajax-county-pagination {
+.ssol-shutdown-pagination-area,
+.ssol-ajax-county-pagination {
     display: flex;
     justify-content: space-between;
 }
@@ -32,13 +37,18 @@
     margin: 0;
 }
 
-.ssol-shutdown-pagination .pagination .page-numbers, .ssol-county-pagination .page-numbers{
+.ssol-shutdown-pagination .pagination .page-numbers,
+.ssol-county-pagination .page-numbers {
     background-color: #192C57;
     padding: 5px 10px;
     border-radius: 3px;
     color: #fff;
 }
-.ssol-shutdown-pagination .pagination .page-numbers:hover, .ssol-shutdown-pagination .pagination .page-numbers.current, .ssol-county-pagination .page-numbers:hover, .ssol-county-pagination .page-numbers.current {
+
+.ssol-shutdown-pagination .pagination .page-numbers:hover,
+.ssol-shutdown-pagination .pagination .page-numbers.current,
+.ssol-county-pagination .page-numbers:hover,
+.ssol-county-pagination .page-numbers.current {
     background-color: #2caae2;
     color: #fff;
 }
@@ -50,105 +60,127 @@
     display: flex;
     gap: 30px;
 }
+
 .ssol-state-to-child-form label {
     margin-bottom: 8px;
     font-weight: 600;
     font-size: 1rem;
 }
+
 .ssol-state-to-child-form select {
     border: 1px solid #94a3b845;
     min-height: 40px;
 }
+
 .ssol-state-to-child-form select option {
     font-weight: 300;
 }
+
 /*----------------------
 ShutDown Template
 -------------------------*/
 
 .ssol-state-list-banner-area {
-    background-color:var(--ssol-primary-color);
-}   
-.ssol-state-list-banner{
-    text-align: center;  
-    margin:0 auto;     
+    background-color: var(--ssol-primary-color);
 }
+
+.ssol-state-list-banner {
+    text-align: center;
+    margin: 0 auto;
+}
+
 .ssol-state-list-banner h2 {
-    color:#fff;
+    color: #fff;
     font-size: 2rem;
 }
+
 .ssol-state-list-banner p {
-    color:#fff;    
+    color: #fff;
     margin: 24px auto 10px;
     font-size: 1rem;
     font-style: normal;
     line-height: 1.3rem;
 }
-.ssol-state-list-area  {
-}
+
+.ssol-state-list-area {}
+
 .ssol-state-list-heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .ssol-state-list-heading h2 {
     font-size: 1.875rem;
     line-height: 2.25rem;
-    color:var(--ssol-heading-color);
+    color: var(--ssol-heading-color);
     font-weight: 600;
 }
+
 .ssol-state-list-heading p {
     font-weight: 400;
     font-size: 1.125rem;
     line-height: 1.75rem;
-    color:var(--ssol-text-color)
+    color: var(--ssol-text-color)
 }
+
 .ssol-state-content-area {
     display: flex;
     gap: 100px;
 }
+
 .ssol-state-lsit-canvs-maps svg {
     width: 100%;
 }
+
 .ssol-state-list-right {
     flex-basis: 70%;
 }
+
 .stroke-slate-400 {
     stroke: #94a3b8;
 }
+
 .fill-slate-50 {
     fill: #f8fafc;
 }
+
 .transition-all {
     transition-property: all;
-    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     transition-duration: .15s;
 }
+
 .stroke-slate-400:hover {
     stroke: #0284c7;
 }
+
 .fill-slate-50:hover {
     fill: #e0f2fe;
 }
+
 .ssol-state-list-left {
     margin-top: 150px;
 }
+
 .ssol-state-list-left h3 {
     font-weight: 400;
     font-size: 1.125rem;
     line-height: 1.75rem;
-    color:var(--ssol-text-color)
+    color: var(--ssol-text-color)
 }
+
 .ssol-state-list-view {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     border: 1px solid #94a3b845;
     border-radius: 0.25rem;
     overflow-y: scroll;
     min-width: 250px;
     height: 400px;
-    list-style: none;    
+    list-style: none;
 }
+
 .ssol-state-list-view li a {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -157,8 +189,9 @@ ShutDown Template
     padding-left: 1rem;
     padding-right: 1rem;
     display: block;
-    color:var(--ssol-text-color);
+    color: var(--ssol-text-color);
 }
+
 .ssol-state-list-view li a:hover {
     background-color: var(--ssol-primary-color);
     color: #fff;
@@ -167,15 +200,18 @@ ShutDown Template
 .ssol-state-county-chart-area {
     background-color: #f1f1f1;
 }
+
 .ssol-sate-county-title {
-    text-align: center;    
+    text-align: center;
 }
+
 .ssol-sate-county-title h2 {
     font-size: 2rem;
     line-height: 2.5rem;
-    color:var(--ssol-heading-color);
+    color: var(--ssol-heading-color);
     font-weight: 600;
 }
+
 .ssol-sate-color-identify {
     display: flex;
     justify-content: center;
@@ -184,6 +220,7 @@ ShutDown Template
     gap: 50px;
     margin-bottom: 30px
 }
+
 .ssol-single-color {
     display: flex;
     justify-content: center;
@@ -192,16 +229,19 @@ ShutDown Template
 }
 
 .ssol-single-color-box {
-    width:15px;
+    width: 15px;
     height: 15px;
     display: block;
 }
+
 .ssol-single-color p {
     margin: 0;
 }
+
 .ssol-box-state {
     background-color: var(--ssol-primary-color);
 }
+
 .ssol-box-conuty {
     background-color: var(--ssol-secondary-color);
 }
@@ -211,18 +251,18 @@ ShutDown Template
     overflow-y: hidden;
     max-width: 100%;
 }
+
 .js-plotly-plot .plotly .main-svg {
     background-color: #e5e7eb00 !important;
 }
 
-.ssol-footer-content-area {
+.ssol-footer-content-area {}
 
-}
 .ssol-footer-content p {
     font-size: 1rem;
     line-height: 1.5rem;
-    color:var(--ssol-text-color);
-    margin: 0;  
+    color: var(--ssol-text-color);
+    margin: 0;
 }
 
 /*----------------------
@@ -234,38 +274,48 @@ ShutDown Template
     gap: 5px;
     align-items: center;
 }
+
 .ssol-back-to-all-state a:hover {
     color: var(--ssol-secondary-color)
 }
+
 .ssol-back-to-all-state img {
-    fill:#fff;
-    color:#fff;
-    width: 20px;    
+    fill: #fff;
+    color: #fff;
+    width: 20px;
 }
+
 .ssol-single-state-archive-area .ssol-state-list-banner {
     text-align: left;
 }
+
 .ssol-single-state-archive-heading {
-    color:#fff;
+    color: #fff;
 }
-.ssol-single-state-archive-heading span  {
+
+.ssol-single-state-archive-heading span {
     font-size: 3rem;
     line-height: 1;
     font-weight: 800;
 }
+
 .ssol-shutdown-pagination .page-numbers {
     cursor: pointer;
 }
+
 /*-------------------------
 * Table Design
 *--------------------------*/
-.ssol-show-data-table-area{}
+.ssol-show-data-table-area {}
+
 .ssol-show-data-table-area table {
     border-radius: 1rem;
 }
+
 .ssol-show-data-table-area tr {
-   text-align:left;
+    text-align: left;
 }
+
 .ssol-show-data-table-area th {
     font-weight: 700;
     vertical-align: middle;
@@ -273,23 +323,92 @@ ShutDown Template
     padding-right: 1rem;
     background-color: rgb(248, 250, 252);
     color: var(--ssol-heading-color);
-    border-color:#e5e7eb !important;
+    border-color: #e5e7eb !important;
 }
+
 .ssol-show-data-table-area td {
     background-color: transparent !important;
     vertical-align: middle;
     font-weight: 300;
-    color:var(--ssol-text-color);
-    border-color:#e5e7eb !important;
+    color: var(--ssol-text-color);
+    border-color: #e5e7eb !important;
 }
+
 .ssol-shutdown-order-heading {
     font-size: 1.5rem;
     line-height: 2.25rem;
-    color:var(--ssol-heading-color);
+    color: var(--ssol-heading-color);
     font-weight: 600;
     margin-bottom: 1rem;
 }
-.ssol-shutdown-details-url img{max-width: 22px;}
+
+.ssol-shutdown-details-url img {
+    max-width: 22px;
+}
+
 .ssol-shutdown-details-url {
     display: block;
+}
+
+
+/*-----------------------------
+* Preloader
+------------------------------*/
+
+.ssol-show-posts-pre-loading{
+    height: 15px;
+    width: 105px;
+    display: flex;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: none;
+}
+.ssol-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color:var(--ssol-primary-color);
+    animation: ssolMove 500ms linear 0ms infinite;
+    margin-right: 30px;
+}
+
+.ssol-circle:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: ssolGrow 500ms linear 0ms infinite;
+}
+
+.ssol-circle:last-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 0;
+    animation: ssolGrow 500ms linear 0s infinite reverse;
+}
+.ssol-show-posts-pre-loading.ssol-pre-active{
+    display: flex;
+}
+
+@keyframes ssolGrow {
+    from {
+        transform: scale(0, 0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@keyframes ssolMove {
+    from {
+        transform: translateX(0px)
+    }
+
+    to {
+        transform: translateX(45px)
+    }
 }

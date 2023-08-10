@@ -28,9 +28,12 @@ $current_term_id = get_queried_object();
         <div class="ssol-short-order-area">
             <div class="ssol-short-order ssol-container">
                 <?php do_action('ssol_select_form', $current_term_id); ?>
+                <!--Preloading-->
+                <?php do_action('ssol_preloader', 'ssol_county_ajax_posts'); ?>
+               <!--/ Preloading-->
+
             </div>
         </div>
-
 
         <!-- Show All data after ajax action/submit -->
         <?php do_action('ssol_ajax_show_all_data'); ?>
@@ -48,12 +51,16 @@ $current_term_id = get_queried_object();
                         ?>
                     </h2>
 
+                    
                     <!--Ajax Post will be loaded here-->
                     <div id="ssol-single-term-post-ajax-container">
                         <!-- Posts will be loaded here -->
                     </div><!--/ Ajax Post will be loaded here-->
 
-                    
+                    <!--Preloading-->
+                    <?php do_action('ssol_preloader', 'ssol_term_general_posts'); ?>
+                    <!--/ Preloading-->
+
 
                     <?php
                     // Add the custom loop for pagination
@@ -70,7 +77,7 @@ $current_term_id = get_queried_object();
                             )
                         ),
                     );
-                        $query = new WP_Query($args);
+                    $query = new WP_Query($args);
                     ?>
                     <!-- Pagination Area Start -->
                     <div class="ssol-shutdown-pagination-area">

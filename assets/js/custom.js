@@ -19,6 +19,10 @@
                     term_id: currentTermID,
                     ssol_nonce: nonce // Add the nonce
                 },
+                beforeSend: function () {
+                    // Show preloader
+                    $('#ssol_term_general_posts.ssol-show-posts-pre-loading').addClass('ssol-pre-active');
+                },
                 success: function (response) {
                     $('#ssol-single-term-post-ajax-container').html(response);
 
@@ -34,6 +38,9 @@
                     $('.ssol-shutdown-pagination .page-numbers').filter(function () {
                         return $(this).text() == page;
                     }).addClass('current');
+
+                    // Hide preloader
+                    $('#ssol_term_general_posts.ssol-show-posts-pre-loading').removeClass('ssol-pre-active');
                 }
             });
         }
