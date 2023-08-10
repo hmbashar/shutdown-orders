@@ -50,14 +50,16 @@ if (empty($get_ssol_state) || empty($get_ssol_county)) { // search field empty c
                     ),
                 )
             );
-            if ($ShutdownSearch->have_posts()) :
+            if ($ShutdownSearch->have_posts()) {
                 while ($ShutdownSearch->have_posts()) :
                     $ShutdownSearch->the_post();
 
                     require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
 
                 endwhile;
-            endif;
+            }else {
+                require(SSOL_PLUGIN_PATH . 'inc/template/no-data.php');
+            }
             // get table footer
             do_action('ssol_data_table_footer');
             ?>

@@ -211,6 +211,8 @@ function ssol_single_term_page_posts()
             $query->the_post();
             require(SSOL_PLUGIN_PATH . 'inc/template/loop-data.php');
         }
+    }else {
+        require(SSOL_PLUGIN_PATH . 'inc/template/no-data.php');
     }
     // get table footer
     do_action('ssol_data_table_footer');
