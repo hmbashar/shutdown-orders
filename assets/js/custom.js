@@ -2,7 +2,7 @@
     jQuery(document).ready(function ($) {
         var loading = false;
         var currentTermID = ssol_custom_ajax.current_term_id;
-        function loadPosts(page) {
+        function ssolSingleTermloadPosts(page) {
             if (loading) return;
             loading = true;
 
@@ -36,13 +36,13 @@
         }
 
         // Load posts for the initial page (page 1)
-        loadPosts(1);
+        ssolSingleTermloadPosts(1);
 
         // Load posts when clicking on pagination numbers
         $('.ssol-shutdown-pagination').on('click', '.page-numbers', function (e) {
             e.preventDefault();
             var page = $(this).text(); // Get the page number from the clicked link
-            loadPosts(page);
+            ssolSingleTermloadPosts(page);
         });
     });
 
