@@ -102,3 +102,6 @@ require_once(SSOL_PLUGIN_PATH . 'inc/chart-data.php');
 
 // shortcode register for state list
 require_once(SSOL_PLUGIN_PATH . 'inc/template/shortcode.php');
+
+// shortcode register for state list
+require_once(SSOL_PLUGIN_PATH . 'inc/metaboxs.php');
