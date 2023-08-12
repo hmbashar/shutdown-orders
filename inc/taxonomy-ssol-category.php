@@ -14,7 +14,7 @@ $current_term_id = get_queried_object();
         <section class="ssol-state-list-banner-area ssol-padding">
             <div class="ssol-state-list-banner ssol-container">
                 <div class="ssol-back-to-all-state">
-                    <a href=""><img src="<?php echo SSOL_PLUGIN_DIR ?>/assets/img/arrow.svg" alt=""> Back To All Sates</a>
+                    <a href="https://shutdown.yourswp.com/covid-19-page/"><img src="<?php echo SSOL_PLUGIN_DIR ?>/assets/img/arrow.svg" alt=""> Back To All Sates</a>
                 </div>
                 <h1 class="ssol-single-state-archive-heading">
                     <span><?php single_term_title(); ?></span> <br>

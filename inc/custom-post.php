@@ -28,7 +28,7 @@ function ssol_create_post_type() {
                 'public' => true,
                 'publicly_queryable' => true,
                 'exclude_from_search' => true,
-                'menu_icon'   => 'dashicons-hammer',
+                'menu_icon'   => 'dashicons-lock',
                 'has_archive' => false,
                 'hierarchical' => false,
                 'capability_type' => 'page',
