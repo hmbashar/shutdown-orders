@@ -71,3 +71,25 @@ add_shortcode('ssol_chart_data', 'ssol_chart_shortcode');
 
 // register shortcode for ajax show all data this function is in inc/action-hooks.php
 add_shortcode('ssol_ajax_show_all_data', 'ssol_ajax_show_all_data');
+
+
+// register shortcode for chart color identify
+function ssol_chart_color_identify() {
+    ?>
+            <div class="ssol-sate-color-identify">
+                <!--Single Color-->
+                <div class="ssol-single-color">
+                    <div class="ssol-single-color-box ssol-box-state"></div>
+                    <p>State</p>
+                </div><!--Single Color-->
+                <!--Single Color-->
+                <div class="ssol-single-color">
+                    <div class="ssol-single-color-box ssol-box-conuty"></div>
+                    <p>County</p>
+                </div><!--Single Color-->
+            </div>
+
+<?php
+}
+
+add_shortcode('ssol-chart-color-identify', 'ssol_chart_color_identify');

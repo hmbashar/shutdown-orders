@@ -16,7 +16,12 @@ $shutdown_order_source = get_post_meta(get_the_ID(), 'ssol-order-source',  true)
 
     <?php if (!empty($shutdown_date_of_order)) : ?>
         <td><?php echo esc_html($shutdown_date_of_order); ?></td>
-    <?php endif; ?>
+
+    <?php
+    else :
+        echo '<td></td>';
+    endif;
+    ?>
 
     <td><?php the_title(); ?></td>
     <td><?php the_excerpt(); ?></td>
@@ -24,12 +29,21 @@ $shutdown_order_source = get_post_meta(get_the_ID(), 'ssol-order-source',  true)
 
     <?php if (!empty($shutdown_order_link)) : ?>
 
-        <td><a  class="ssol-shutdown-details-url" href="<?php echo esc_url($shutdown_order_link); ?>" target="_blank"><img src="<?php echo SSOL_PLUGIN_DIR;?>/assets/img/link.svg" alt="Order Link"></a></td>
+        <td><a class="ssol-shutdown-details-url" href="<?php echo esc_url($shutdown_order_link); ?>" target="_blank"><img src="<?php echo SSOL_PLUGIN_DIR; ?>/assets/img/link.svg" alt="Order Link"></a></td>
 
-    <?php endif; ?>
+    <?php
+    else :
+        echo '<td></td>';
+    endif;
+    ?>
 
     <?php if (!empty($shutdown_order_source)) : ?>
-        <td><a class="ssol-shutdown-details-url" href="<?php echo esc_url($shutdown_order_source); ?>" target="_blank"><img src="<?php echo SSOL_PLUGIN_DIR;?>/assets/img/link.svg" alt="source url"></a></td>
-    <?php endif; ?>
+        <td><a class="ssol-shutdown-details-url" href="<?php echo esc_url($shutdown_order_source); ?>" target="_blank"><img src="<?php echo SSOL_PLUGIN_DIR; ?>/assets/img/link.svg" alt="source url"></a></td>
+
+    <?php
+    else :
+        echo '<td></td>';
+    endif;
+    ?>
 
 </tr>

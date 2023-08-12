@@ -50,18 +50,7 @@ $current_term_id = get_queried_object();
         <!--Chart title part-->
         <div class="ssol-sate-county-title">
             <h2>Shutdowns by State</h2>
-            <div class="ssol-sate-color-identify">
-                <!--Single Color-->
-                <div class="ssol-single-color">
-                    <div class="ssol-single-color-box ssol-box-state"></div>
-                    <p>State</p>
-                </div><!--Single Color-->
-                <!--Single Color-->
-                <div class="ssol-single-color">
-                    <div class="ssol-single-color-box ssol-box-conuty"></div>
-                    <p>County</p>
-                </div><!--Single Color-->
-            </div>
+            <?php echo do_shortcode('[ssol-chart-color-identify]'); ?>
         </div><!--/ Chart title part-->
         <div class="ssol-chartbar-data-area">
             <?php echo do_shortcode('[ssol_chart_data]'); ?>

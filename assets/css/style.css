@@ -216,9 +216,9 @@ ShutDown Template
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
     gap: 50px;
-    margin-bottom: 30px
+    /* margin-top: 50px;    
+    margin-bottom: 30px */
 }
 
 .ssol-single-color {
