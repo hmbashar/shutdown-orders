@@ -66,7 +66,7 @@ $current_term_id = get_queried_object();
                     // Add the custom loop for pagination
                     $args = array(
                         'post_type' => 'shutorder',
-                        'posts_per_page' => 1,
+                        'posts_per_page' => 10,
                         'paged' => $paged,
                         'tax_query' => array(
                             array(
