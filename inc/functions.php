@@ -167,7 +167,7 @@ function custom_taxonomy_archive_query($query)
 {
     if (is_tax('ssol-category') && $query->is_main_query()) {
         $query->set('post_type', 'shutorder'); // Set the post type to 'post'
-        $query->set('posts_per_page', 1); // Set the number of posts per page (change it as needed)
+        $query->set('posts_per_page', 10); // Set the number of posts per page (change it as needed)
     }
 }
 add_action('pre_get_posts', 'custom_taxonomy_archive_query');
@@ -190,7 +190,7 @@ function ssol_single_term_page_posts()
 
     $args = array(
         'post_type' => $post_type,
-        'posts_per_page' => 1,
+        'posts_per_page' => 10,
         'paged' => $paged,
         'tax_query' => array(
             array(
