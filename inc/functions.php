@@ -224,3 +224,21 @@ function ssol_single_term_page_posts()
 }
 add_action('wp_ajax_ssol_single_term_page_posts', 'ssol_single_term_page_posts');
 add_action('wp_ajax_nopriv_ssol_single_term_page_posts', 'ssol_single_term_page_posts');
+
+
+//change excerpt label here
+function ssol_shutdown_excerpt_rename($translation, $original)
+{
+    if (get_post_type( ) == 'shutorder') {
+        if ('Excerpt' == $original) {
+            return 'Affecting';
+        } else {
+            $pos = strpos($original, 'Excerpts are optional hand-crafted summaries of your');
+            if ($pos !== false) {
+                return  'Affecting Area.';
+            }
+        }
+    }
+    return $translation;
+}
+add_filter('gettext', 'ssol_shutdown_excerpt_rename', 10, 2);

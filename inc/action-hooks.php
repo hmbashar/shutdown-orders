@@ -19,7 +19,7 @@ function ssol_numbering_pagination(){
 		<div class="ssol-shutdown-pagination">
 			<?php
 			the_posts_pagination(array(
-				'mid_size' => 2, // Number of page numbers to show before and after the current page
+				'mid_size' => 5, // Number of page numbers to show before and after the current page
 				'prev_text' => '&laquo;', // Text for the previous page link
 				'next_text' => '&raquo;', // Text for the next page link
 				'screen_reader_text' => ' ', // Hide default screen reader text

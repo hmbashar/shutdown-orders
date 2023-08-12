@@ -93,6 +93,7 @@ $current_term_id = get_queried_object();
                                 echo paginate_links(array(
                                     'total' => $query->max_num_pages,
                                     'current' => $paged,
+                                    'show_all' => true,
                                 ));
                                 ?>
                             </div>

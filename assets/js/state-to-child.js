@@ -10,7 +10,7 @@
 		var selectedUrl = selectedOption.data('url');
 		// Redirect the user to the selected URL
 		window.location.href = selectedUrl;
-		console.log('no ajax');
+		
 		return false;
 
 

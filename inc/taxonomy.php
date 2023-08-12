@@ -10,7 +10,7 @@ function ssol_taxonomy()  {
 		'shutorder',                  //post type name
 		array(
 			'hierarchical'          => true,
-			'label'                         => 'State',  //Display name
+			'label'                         => 'States',  //Display name
 			'query_var'             => true,
 			'show_admin_column'             => true,
 			'rewrite'                       => array(

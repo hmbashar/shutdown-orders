@@ -16,7 +16,6 @@ $shutdown_order_source = get_post_meta(get_the_ID(), 'ssol-order-source',  true)
 
     <?php if (!empty($shutdown_date_of_order)) : ?>
         <td><?php echo esc_html($shutdown_date_of_order); ?></td>
-
     <?php
     else :
         echo '<td></td>';

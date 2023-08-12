@@ -8,7 +8,7 @@ Plugin Name: Shutdown Orders List
 Plugin URI: https://github.com/hmbashar/shutdown-orders
 Description: This Plugin for showing State and Local Government COVID-19 Shutdown Orders list (https://ercspecialists.com/shutdown-orders)
 Version: 1.0
-Author: Md Abul Bashar
+Author: SupreoX Limited
 Author URI: https://www.supreox.com
 License: GPLv2 or later
 Text Domain: ssol

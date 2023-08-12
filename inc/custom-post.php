@@ -33,7 +33,7 @@ function ssol_create_post_type() {
                 'hierarchical' => false,
                 'capability_type' => 'page',
                 'rewrite' => array( 'slug' => 'ssol-shutdown' ),
-                'supports' => array( 'title', 'excerpt', 'custom-fields' )
+                'supports' => array( 'title', 'excerpt' )
                 )
         );      
 
